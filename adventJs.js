@@ -1143,18 +1143,68 @@ picture frame
 
 function processData(input) {
   //Enter your code here
-  const [operation, dataType, wordsToOperate] = input.split(";");
-  let separationIndex;
+  const [operation, dataType, words] = input.split(";");
+  let result = ""
 
-  for (let i = 0; i < wordsToOperate.length - 1; i++) {
-    if (/[A-Z]/.test(wordsToOperate[i])) {
-      separationIndex = i;
+  if (operation === "S") {
+    let wordsArray = words.split("")
+    for(let i=0; i<wordsArray.length; i++){
+      if(/[A-Z]/.test(wordsArray[i])){
+        wordsArray[i] = " " + wordsArray[i].toLowerCase()
+      }
     }
+    result = dataType == "M" ? wordsArray.join("").slice(0, -2) : wordsArray.join("").trim()
+    console.log(result)
+  } else {
+    let strArray = words.split(" ").map(el => el.charAt(0).toUpperCase() + el.slice(1))
+    result = dataType === "C" ? strArray.join("")
+      : dataType === "M" ? strArray.join("").charAt(0).toLowerCase() + strArray.join("").slice(1) + "()"
+      : strArray.join("").charAt(0).toLowerCase() + strArray.join("").slice(1)
+    console.log(result)
   }
-  operatedWord = `${wordsToOperate.slice(0, separationIndex)} ${wordsToOperate
-    .slice(7, wordsToOperate.length - 2)
-    .toLowerCase()}`;
-  return operatedWord;
 }
 
-console.log(processData("S;M;plasticCup()"));
+// Split Operations
+processData("S;M;plasticCup()");
+processData("S;C;LargeSoftwareBook");
+processData("S;V;pictureFrame");
+
+//Combine Operations
+processData("C;V;mobile phone");
+processData("C;C;coffee machine");
+processData("C;M;white sheet of paper");
+
+processData("S;V;iPad")
+processData("C;M;mouse pad")
+processData("C;C;code swarm")
+processData("S;C;OrangeHighlighter")
+
+function processData(input) {
+  let words = input.split('\r\n')
+  for(let i = 0; i < words.length; i++){
+    let split = words[i].substring(0,1) === 'S';
+    let type = words[i].substring(2,3);
+    let word = words[i].substring(4, words[i].length);
+    if(split){
+      if(type === 'M'){
+        word = word.substring(0,word.length-2) //remove ()
+      }
+        word = word.split(/(?=[A-Z])/).join(' ').toLowerCase();
+      } else {
+        let arr = word.split(' ')
+        word = concat(arr, type)
+      }
+        console.log(word)
+    }
+}
+
+function concat(array, type){
+  array.forEach( (e, j) => {
+    array[j] = e.substring(0,1).toUpperCase() + e.substring(1, e.length)
+      if(j === 0 && type !== 'C'){
+        array[j] = e.substring(0,1).toLowerCase() + e.substring(1, e.length)
+      }
+  } )
+  
+  return array.join('').concat( type === 'M'? '()': '')
+}
