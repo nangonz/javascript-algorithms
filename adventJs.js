@@ -1260,4 +1260,35 @@ function divisibleSumPairs(n, k, ar) {
 
 }
 
-console.log (divisibleSumPairs(6, 3, [1,3,2,6,1,2]))
+// console.log (divisibleSumPairs(6, 3, [1,3,2,6,1,2]))
+
+/*
+  SPARSE ARRAY CHALLENGE
+  There is a collection of inputs strings and a collection of  
+  query strings. For each query string, determine how many times  
+  it occurs in the list of input strings. Return an array of the  
+  results.
+
+  EXAMPLE:  
+  string = [ "ab", "ab", "abc" ]  
+  queries = [ "ab", "abc", "bc" ]  
+  There are 2 instances of "ab", 1 of "abc" and 0 of "bc". For each  
+  query string in strings.  
+  matchingStrings has the following parameters:  
+  * string strings[n] - an array of strings to search.  
+  * string queries[q] - an array of query strings.  
+  
+  RETURNS:
+  int[q]: an array of results for each query
+*/
+
+function matchingStrings(strings, queries) {
+    // Write your code here
+    let appearences = []
+    for (let query of queries) {
+      appearences.push(strings.filter(q=> q === query).length)
+    }
+    return appearences
+}
+
+// console.log(matchingStrings(["aba", "baba", "aba", "xzxb"], ["aba", "xzxb", "ab"]));
