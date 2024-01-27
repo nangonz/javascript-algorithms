@@ -1164,20 +1164,20 @@ function processData(input) {
   }
 }
 
-// Split Operations
-processData("S;M;plasticCup()");
-processData("S;C;LargeSoftwareBook");
-processData("S;V;pictureFrame");
+// // Split Operations
+// processData("S;M;plasticCup()");
+// processData("S;C;LargeSoftwareBook");
+// processData("S;V;pictureFrame");
 
-//Combine Operations
-processData("C;V;mobile phone");
-processData("C;C;coffee machine");
-processData("C;M;white sheet of paper");
+// //Combine Operations
+// processData("C;V;mobile phone");
+// processData("C;C;coffee machine");
+// processData("C;M;white sheet of paper");
 
-processData("S;V;iPad")
-processData("C;M;mouse pad")
-processData("C;C;code swarm")
-processData("S;C;OrangeHighlighter")
+// processData("S;V;iPad")
+// processData("C;M;mouse pad")
+// processData("C;C;code swarm")
+// processData("S;C;OrangeHighlighter")
 
 function processData(input) {
   let words = input.split('\r\n')
@@ -1243,3 +1243,34 @@ function concat(array, type){
   SAMPLE OUTPUT
   5 -> Valid pairs
 */
+
+function divisibleSumPairs(n, k, ar) {
+    // Write your code here
+    let validPair = new Set;
+
+    for (let i=0; i<n; i++) {
+      for (let j=i+1; j<n; j++) {
+        if ((ar[i]+ar[j]) % k === 0) {
+          validPair.add(`${Math.min(i,j)}, ${Math.max(i,j)}`)
+        }
+      }
+    }
+
+    return validPair.size
+
+}
+
+console.log (divisibleSumPairs(6, 3, [1,3,2,6,1,2]))
+
+function divisibleSumPairsAlternative(n, k, ar) {
+    let count = 0;
+    for(let i = 0; i < n; i++){
+        for(let j = i+1; j < n; j++){
+            if((ar[i]+ ar[j]) % k === 0)
+                count++;
+        }
+    }
+    return count;
+}
+
+console.log (divisibleSumPairsAlternative(6, 3, [1,3,2,6,1,2]))
