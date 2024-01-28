@@ -1286,9 +1286,9 @@ function matchingStrings(strings, queries) {
     // Write your code here
     let appearences = []
     for (let query of queries) {
-      appearences.push(strings.filter(q=> q === query).length)
+      appearences.push(strings.filter((str)=> str === query).length)
     }
     return appearences
 }
 
-// console.log(matchingStrings(["aba", "baba", "aba", "xzxb"], ["aba", "xzxb", "ab"]));
+console.log(matchingStrings(["aba", "baba", "aba", "xzxb"], ["aba", "xzxb", "ab"]));
