@@ -1,0 +1,15 @@
+{
+  "name": "javascript-algorithm-practice",
+  "version": "0.0.0",
+  "description": "hacker-rank challenges",
+  "main": "adventJs.js",
+  "scripts": {
+    "test": "node --watch adventJs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nangonz/javascript-algorithms.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
