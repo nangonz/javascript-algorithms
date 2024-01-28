@@ -1291,4 +1291,52 @@ function matchingStrings(strings, queries) {
     return appearences
 }
 
-console.log(matchingStrings(["aba", "baba", "aba", "xzxb"], ["aba", "xzxb", "ab"]));
+// console.log(matchingStrings(["aba", "baba", "aba", "xzxb"], ["aba", "xzxb", "ab"]));
+
+/*
+  PLUS MINUS
+  Given an array of integers, calculate the ratios of its elements  
+  that are positive, negative, and zero. Print the decimal value of  
+  each fraction on a new line with 6 places after the decimal.
+
+  NOTE: This challenge intoduces precision problems. The test cases  
+  are scaled to six decimal places, though anwers with absolute error  
+  of up to 10-4 are acceptable. 
+
+  EXAMPLE:
+  arr = [1,1,0,-1,-1]
+  There are n=5 elements, two positive, two negative and one zero.  
+  Their ratios are 2/5 = 0,400000, 2/5 = 0.400000 and 1/5 = 0.200000  
+  Resutls are printed as:
+  0,400000
+  0,400000
+  0,200000
+
+  FUNCTION DESCRIPTION:
+  plusMinus has the following parameters:
+  * int arr[n]: an array of integers
+
+  PRINT:
+  Print the ratios of positive, negative and zeros values in the  
+  array. Each value should be printed on a separate line with 6  
+  digits after the decimal. The function should not return a value.  
+  
+  Print the following 3 lines, each to 6 decimals:
+  1. proportion of positive values.
+  2. proportion of negative values.
+  3. proportion of zeros.
+
+*/
+
+function plusMinus (arr) {
+  let n = arr.length
+  let positives = (arr.filter(int => int > 0).length / n).toFixed(6)
+  let negatives = (arr.filter(int => int < 0).length / n).toFixed(6)
+  let zeros = (arr.filter(int => int === 0).length / n).toFixed(6)
+
+  console.log(positives);
+  console.log(negatives);
+  console.log(zeros);
+}
+
+// console.log(plusMinus([-4, 3, -9, 0, 4, 1]))
