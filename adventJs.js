@@ -1419,4 +1419,4 @@ function gradingStudents (grades) {
     return roundedGrades
 }
 
-console.log(gradingStudents([33, 57, 84, 78, 29]))
+console.log( gradingStudents([33, 57, 84, 78, 29]) )
