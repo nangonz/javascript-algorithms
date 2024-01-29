@@ -1516,17 +1516,120 @@ function countingSort ( array ) {
   return appearencesArray
 }
 
-console.log(countingSort(
-  [
-  '63', '25', '73', '1',  '98', '73', '56', '84', '86', '57',
-  '16', '83', '8',  '25', '81', '56', '9',  '53', '98', '67',
-  '99', '12', '83', '89', '80', '91', '39', '86', '76', '85',
-  '74', '39', '25', '90', '59', '10', '94', '32', '44', '3',
-  '89', '30', '27', '79', '46', '96', '27', '32', '18', '21',
-  '92', '69', '81', '40', '40', '34', '68', '78', '24', '87',
-  '42', '69', '23', '41', '78', '22', '6',  '90', '99', '89',
-  '50', '30', '20', '1',  '43', '3',  '70', '95', '33', '46',
-  '44', '9',  '69', '48', '33', '60', '65', '16', '82', '67',
-  '61', '32', '21', '79', '75', '75', '13', '87', '70', '33'
+// console.log(countingSort(
+//   [
+//   '63', '25', '73', '1',  '98', '73', '56', '84', '86', '57',
+//   '16', '83', '8',  '25', '81', '56', '9',  '53', '98', '67',
+//   '99', '12', '83', '89', '80', '91', '39', '86', '76', '85',
+//   '74', '39', '25', '90', '59', '10', '94', '32', '44', '3',
+//   '89', '30', '27', '79', '46', '96', '27', '32', '18', '21',
+//   '92', '69', '81', '40', '40', '34', '68', '78', '24', '87',
+//   '42', '69', '23', '41', '78', '22', '6',  '90', '99', '89',
+//   '50', '30', '20', '1',  '43', '3',  '70', '95', '33', '46',
+//   '44', '9',  '69', '48', '33', '60', '65', '16', '82', '67',
+//   '61', '32', '21', '79', '75', '75', '13', '87', '70', '33'
+//   ]
+// ))
+
+
+/*
+  COUNTING VALLEYS
+  An avid hiker meticulous records of their hikes. During the last hike that
+  took exactly "[steps]" steps, for every step it was noted if it was an uphill
+  , (U), or a downhill, (D) step. Hikes always start and end at sea level, 
+  and each step up or down represents a 1 unit change in altitude. We define
+  the following terms:
+
+    * A mountain is a sequence of consecutive steps above sea level, starting
+      with a step up from sea level and ending with a step down to sea level.
+
+    * A valley is a sequence of consecutive steps below sea level, starting
+      with a step down from sea level and ending with a step up to sea level.
+    
+  Given the sequence of up and down steps during a hike, find and print the
+  number of valleys walked through.
+
+  EXAMPLE:
+  steps = 8 path = [D D U U U U D D]
+  The hiker first enters a valley 2 units deep. Then they climb out an up onto
+  a mountain 2 units high. Finally, the hiker returns to sea level and ends the
+  hike.
+
+  FUNCTION DESCRIPTION:
+  countingValleys has the following parameters:
+    * int steps: the number of steps on the hike.
+    * string path: a string describinf the path.
+  
+  RETURNS:
+    * int: the number of valleys traversed.
+*/
+
+function countingValleys(steps, path) {
+  // Write your code here
+  let seaLevel = 0
+  let pathTravelled = [0]
+  
+  for (let step of path) {
+    step === "U" ? seaLevel ++ : seaLevel --
+    seaLevel === 0 
+      ? pathTravelled.push(0) 
+      : seaLevel < 0 
+        ? pathTravelled.push("V") 
+        : pathTravelled.push("M")
+  }
+
+  return pathTravelled.join("").split(0).filter(el => el.includes("V")).length
+}
+
+// console.log(countingValleys(8, "DDUUUDDDUU"))
+
+function countingValleysAlt (steps, path) {
+  sea_level = 0
+  cur_level = 0
+  past_sea_level = false
+
+  total_passed = 0
+
+  for (let step of path) {
+    if (step == "U"){
+      cur_level +=1
+      if(cur_level >= sea_level && past_sea_level){
+        past_sea_level = false
+        total_passed += 1
+      }
+    } else {
+      cur_level -= 1
+      if(cur_level < sea_level) {
+        past_sea_level = true
+      }
+    }
+  }
+  return total_passed
+}
+
+/*
+  PANGRAMS
+  Roy quiere mejorar su velocidad de escritura en máquina para concursos de 
+  programación. Su amigo le dijo que escribiera la oración " The quick brown 
+  fox jumps over the lazy dog" repetidamente porque es un pangrama (pangrama son 
+  oraciones construidas usando todas las letras del alfabeto, por lo menos una 
+  vez).
+
+  Después de escribir la oración muchas veces, Roy se aburrió. Entonces comenzó a 
+  buscar otros pangramas. Dada una oración "s", dile a Roy si es un pangrama o no.
+
+  EXAMPLE:
+  Inpupt - "We promptly judge antique ivory buckles for the next prize"
+  Output - pangram
+*/
+
+function pangrams (string) {
+  let alphabet = [
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 
+    'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
   ]
-))
+  let isPangram = alphabet.every(letter=> string.toLowerCase().includes(letter))
+  return isPangram? "pangram" : "not pangram"
+}
+
+console.log(pangrams("We promptly judge antique ivory buckles for the next prize"))
