@@ -1419,4 +1419,41 @@ function gradingStudents (grades) {
     return roundedGrades
 }
 
-console.log( gradingStudents([33, 57, 84, 78, 29]) )
+// console.log( gradingStudents([33, 57, 84, 78, 29]) )
+
+/*
+  DIAGONAL DIFFERENCE
+  Given a square matrix, calculate the absolute difference between the sums of
+  its diagonals.
+
+  FUNCTION DESCRIPTION:
+  diagonalDifference takes the following parameters:
+  * int arr[n][m]: an array of integers
+
+  RETURN:
+  int: the absolute diagonal difference
+*/
+
+function diagonalDifference ( array ) {
+  let arrSize = array.length - 1
+  let diagonalRight = 0
+  let diagonalLeft = 0
+
+  for (let i = 0; i <= arrSize; i++) {
+    diagonalRight += array[i][i]
+    diagonalLeft += array[i][arrSize-i]
+    console.log(array[i][i], array[i][arrSize-i])
+  }
+  return Math.abs(diagonalRight - diagonalLeft)
+}
+
+const diagonalArray = [
+  [1, 2, 3, 5, 6],
+  [5, 3, 7, 5, 6],
+  [1, 6, 2, 5, 6],
+  [1, 6, 2, 5, 6],
+  [1, 6, 2, 5, 6],
+]
+
+// console.log(diagonalDifference(diagonalArray));
+
