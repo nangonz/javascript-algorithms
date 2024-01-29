@@ -1632,4 +1632,34 @@ function pangrams (string) {
   return isPangram? "pangram" : "not pangram"
 }
 
-console.log(pangrams("We promptly judge antique ivory buckles for the next prize"))
+// console.log(pangrams("We promptly judge antique ivory buckles for the next prize"))
+
+
+/*
+  MARS EXPLORATION
+  A space explorer's ship crashed on Mars. They send a series of SOS messages to Earth
+  for help. Letter in some of the SOS messages are altered by cosmic radiation during
+  transmission. Given the signal received by Earth as a string, s, determine how many
+  letters of the SOS message have been chaged by radiation.
+
+  EXAMPLE:
+  S = SOSSPSSQSSOR, and signal length = 12. Sami sent 4 SOS messages (12/3 = 4)
+  Expected signal: SOSSOSSOSSOS
+  Recieved signal: SOSSPSSQSSOR
+  We print the number of changed letters, which is 3.
+
+  F
+*/
+
+function marsExploration (message) {
+  let signal_length = message.length
+  let signal_message = new Array(signal_length/3).fill("SOS").join("").split("")
+  let changed_letters = message
+    .split("")
+    .filter((letter, index)=> letter !== signal_message[index])
+    .length
+
+  return changed_letters
+}
+
+// console.log(marsExploration("SOSSPSSQSSOR"));
