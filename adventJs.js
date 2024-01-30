@@ -1663,3 +1663,58 @@ function marsExploration (message) {
 }
 
 // console.log(marsExploration("SOSSPSSQSSOR"));
+
+/*
+  PERMUTING TWO ARRAYS
+  There are two n-elements arrays of integers, A and B. Permute them into 
+  some A' and B' such that the relation A'[i] + B'[i] >= k holds for all
+  i where 0 <= i < n.
+
+  There will be q queries consisting of A, B and k. For each query, return
+  YES if some permutation A', B' satysfying the relation exists. Otherwise
+  return NO
+
+  EXAMPLE:
+  A = [0,1]
+  B = [0,2]
+  k =1
+  A valid A', B' is A'=[1,0] and B'=[0,2]  1+0>=1 and 0+2>=1  
+  Return YES.
+
+  FUNCTION DESCRIPTION:
+  Complete the twoArrays function in the editor below, it should return a
+  string, either YES o NO.
+  twoArrays has the following parameters:
+    * int k: an integer
+    * int A[n]: an array of integers
+    * int B[n]: an array of integers
+  
+  RETURNS:
+    * string: either YES or NO.
+*/
+
+function twoArrays(k, A, B) {
+  // Write your code here
+  const A2 = A.sort((a,b) => a - b)
+  const B2 = B.sort((a,b) => b - a)
+
+  const isSatisfying = A2.every((a, index)=> {
+    return a + B2[index] >= k
+  })
+
+  return isSatisfying ? 'YES' : 'NO';
+}
+
+/*
+  The problem asks for if it exists any permutation of A and B as for
+  every "i" from 0 to n A[i]+B[I] >= k
+  Therefore, finding just one pair of permutation A and permutation B
+  that satisfy the condition is enough for the program to yield "YES"
+
+  Actually finding the permutation for A and B is a trap here. You don't
+  really need to brute force all permutation, the idea is to sort A in
+  ascending order and to sort B in descending order (which, both of them
+  is valid permutation of A and B, respectively) and make your comparison
+  on that permutation. If this pair of permutations fails to satisfy the 
+  condition, then all of other permutation cannot satisfy the condition.
+*/
