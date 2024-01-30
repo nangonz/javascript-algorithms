@@ -1718,3 +1718,80 @@ function twoArrays(k, A, B) {
   on that permutation. If this pair of permutations fails to satisfy the 
   condition, then all of other permutation cannot satisfy the condition.
 */
+
+/* SUBARRAY DIVISION ------------------------------------------------------
+
+  Two children, Lyli and Ron, want to share a chocolate bar. Each of the 
+  squares has an integer on it.
+
+  Lyli decides to share a continuous segment of the bar selected such that:
+    * The length of the segment matches Ron's birth month and,
+    * The sum of the integers on the squares is equal to his birth day.
+  Determine how many ways she can divide the chocolate.
+  
+  EXAMPLE:
+  s = [2,2,1,3,2]
+  d = 4
+  m = 2
+  Lily wants to find segments summing to Ron's birth day, d=4 with a length
+  equalling his birth month m=2. In this case there are two segments meeting
+  her criteria: [2,2] and [1,3]
+
+  FUNCTION DESCRIPTION:
+  birthday has the following parameters:
+  * int s[n]: the number on each of the squares of chocolate
+  * int d: Ron's birth day
+  * int m: Ron's birth month
+  
+  RETURNS:
+  int: the number of ways the bar can be divided
+
+  1. deben ser consecutivos
+  2. la longitud debe ser igual al mes
+  3. la suma debe ser igual al dia
+*/
+
+function birthday (s, d, m) {
+  let arr_length = s.length
+  let matching_arr = []
+
+  for (let i=0; i<arr_length; i++) {
+    let test_arr = s.slice(i, (i+m))
+    let items_sum = test_arr.reduce((acc, value)=> acc + value, 0)
+    if (test_arr.length === m &&  items_sum === d){
+      matching_arr.push(test_arr)
+    }
+  }
+  return matching_arr.length
+}
+
+// console.log(birthday([2,2,1,3,2], 4, 2))
+
+/* XOR STRING 3 ----------------------------------------------------------
+  In this challenge, the task is to debug the existing code to successfully
+  execute provided test files.
+
+  Given two strings consisting of digits 0 and 1 only, find the XOR of the
+  two strings. Debug the given function string_xor to find the xor of the 
+  two given string appropriately.
+
+  NOTE: You can modify ar most three lines in the given code and you cannot
+  add or remove lines to the code.
+
+  To know more about XOR follow the link: https://en.wikipedia.org/wiki/Exclusive_or
+
+*/
+
+function stringsXOR(s, t) {
+  let result = ""
+  for(i = 0; i < s.length; i++) {
+    if(s.charAt(i) == t.charAt(i)){
+      result += "0";
+    } else {
+      result += "1";
+    }
+  }
+  return result;
+}
+
+console.log(stringsXOR("10101", "00101"))
