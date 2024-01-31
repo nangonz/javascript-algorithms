@@ -1872,4 +1872,104 @@ function migratoryBirds (arr) {
   return sight_times.indexOf(Math.max(...sight_times))
 }
 
-console.log(migratoryBirds([1,4,4,4,5,3]))
+// console.log(migratoryBirds([1,4,4,4,5,3]))
+
+/* MAXIMUM PERIMETER TRIANGLE
+  Given an array of stick lengths, use 3 of them to construct a non-degenerate
+  triangle with the maximum possible perimeter. Return an array of the lengths
+  of its sides as 3 integers in non-decreasing order.
+
+  If there are several valid triangles having the maximum perimeter:
+    1. Choose the one with the longest maximum side.
+    2. If more than one has that maximum, choose from them the one with
+      the longest minimum side.
+    3. If more tha one has that maximum as well, print any one of them.
+  
+  If non-degenerate triangle exists, retur [-1]
+
+  EXAMPLE:
+  sticks = [1,2,3,4,5,10]
+  The triplet (1,2,3) will not form triangle. Neither will (4,5,10) or (2,3,5),
+  so the problem is reduced to (2,3,4) and (3,4,5). The longer perimeter is
+  3+4+5 = 12
+
+  FUNCTION DESCRIPTION:
+  maximumPerimeterTriangle function has the following parameters:
+    * int sticks[n]: the lengths of sticks available.
+
+  RETURNS:
+    * int[3] or int[1]: the side lengths of the chosen triangle in 
+      non-decreasing order or -1
+*/
+
+function maximumPerimeterTriangle(sticks) {
+  let valid_triangles = []
+  let ordered_sticks = sticks.sort((a,b)=> b-a)
+  let n = sticks.length
+
+  for (let i=0; i<n-2; i++) {
+    let a = ordered_sticks[i]
+    let b = ordered_sticks[i+1]
+    let c = ordered_sticks[i+2]
+    let sum = a+b+c
+    
+    if (a < b + c) return ([c,b,a])
+  }
+  return valid_triangles ? [-1] : valid_triangles 
+}
+
+// console.log(maximumPerimeterTriangle([1,2,3]))
+
+/* ZIG ZAG SEQUENCE
+  In this challenge, the task is to debug the existing code to seccessfully
+  execute all provided test files.
+  
+  Given an array of n distinct integers, transform the arrary into a zig zag
+  sequence by permuting the array elements. A sequence will be called a zig zag
+  sequence if the first k elements in the sequence are in increasing order and
+  the last k elements are in decreasing order, where k= (n + 1)/2.
+  You need to find the lexicographically smallest zig zag sequence of the given
+  array.
+  
+  EXAMPLE:
+  a = [2,3,5,1,4]
+  Now if we permute the array a [1,4,5,3,2] the resutl is a zig zag sequence.
+  Debug the given function findZigZagSequence to return the appropiate zig zag
+  sequence for the given input array.
+
+  NOTE: You can modify at most three lines in the given code. You cannot add
+  or remove lines of code.
+
+*/
+
+/*
+Here is the explanation without code: 
+1. Sort the given array. 
+2. Take the mid value of the sorted array. 
+3. Swap the mid value and the last value of the sorted value. 
+  Since we need the largest number at the mid. 
+  This step brings our largest value in the middle of the array. 
+4. Now, take the start and end variable and initialize end as 
+  the last element and start as our next immediate element to the 
+  middle element. 
+5. Run a while loop till the start value is less than or equal to 
+  the end value and keep swapping the values at start and end indexes. 
+  6. Increase the start with 1 and decrease end value with 1 simultaneously.
+*/
+
+function findZigZagSequence (arr, n) {
+  let sorted_asc = arr.sort()
+  let max_value = sorted_asc[n-1]
+  let mid = Math.floor(n/2)
+  sorted_asc[n-1] = sorted_asc[mid]
+  sorted_asc[mid] = max_value
+
+  let start = sorted_asc[mid+1]
+  let end = sorted_asc[n-1]
+
+  while(start > end)
+
+  return sorted_asc
+}
+
+console.log(findZigZagSequence([2,3,5,1,4], 5));
