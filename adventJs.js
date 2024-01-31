@@ -1866,7 +1866,6 @@ function migratoryBirds (arr) {
 
   let sight_times = types_ordered.reduce((acc, current_type) => {
     acc[current_type] += 1;
-    console.log(acc)
     return acc;
   }, bird_types);
 
