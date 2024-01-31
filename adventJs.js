@@ -1860,12 +1860,17 @@ function sockMerchantAlt(n, ar) {
 */
 
 function migratoryBirds (arr) {
-  let birds_type_seen = arr.sort().reduce((acc, el) => 
-    el === acc.lastColor 
-      ? {lastType: '', sights: acc.sights + 1}
-      : {lastType: el, sights: acc.sights}
-    , {lastColor: '', sights: 0})
-  console.log(birds_type_seen)
+  let bird_types = new Array(6).fill(0)
+  const types_ordered = arr.sort()
+  console.log(types_ordered)
+
+  let sight_times = types_ordered.reduce((acc, current_type) => {
+    acc[current_type] += 1;
+    console.log(acc)
+    return acc;
+  }, bird_types);
+
+  return sight_times.indexOf(Math.max(...sight_times))
 }
 
-console.log(migratoryBirds([1,1,2,2,3]))
+console.log(migratoryBirds([1,4,4,4,5,3]))
