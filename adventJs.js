@@ -1794,4 +1794,78 @@ function stringsXOR(s, t) {
   return result;
 }
 
-console.log(stringsXOR("10101", "00101"))
+// console.log(stringsXOR("10101", "00101"))
+
+/* SALES BY MATCH
+  There is a large pile of socks that must be paired by color. Given an 
+  array of integers representing the color of each sock, determine how many 
+  pairs of socks with matching colors there are.
+  
+  EXAMPLE:
+  n = 7
+  ar = [1,2,1,2,1,3,2]
+
+  There is one pair of color 1 and one of color 2. There are three odd socks
+  left, one of eack color. The number of pairs is 2.
+
+  FUNCTION DESCRIPTION:
+  sockMerchant function has the following parameters:
+    * int n: the number of socks in the pile
+    * int ar[n]: the colors of each sock
+  
+  RETURNS:
+    * int: the number of pairs
+*/
+
+function sockMerchant (n, arr) {
+  let sock_colors = [...new Set(arr)]
+  let sock_pair_drawer = 0
+
+  for (let color of sock_colors) {
+    let same_color_socks = arr.filter(sock => sock === color)
+    sock_pair_drawer += Math.floor(same_color_socks.length / 2)
+  }
+
+  return sock_pair_drawer
+}
+
+function sockMerchantAlt(n, ar) {
+    return ar.sort().reduce((acc, el) => 
+        el === acc.lastColor 
+            ? {lastColor: '', pairCnt: acc.pairCnt + 1}
+            : {lastColor: el, pairCnt: acc.pairCnt}
+    , {lastColor: '', pairCnt: 0}).pairCnt;
+}
+
+// console.log(sockMerchant(9, [10,20,20,10,10,30,50,10,20]))
+
+/* MIGRATORY BIRDS -----------------------------------------------------
+  Given an array of birds sighting where every element represents a bird
+  type id, determine the id of the most frequently sighted type. If more 
+  than 1 type has been spotted that maximum amount, return the smallest
+  of their ids.
+
+  EXAMPLE:
+  arr = [1,1,2,2,3]
+  There are two each of types 1 and 2, and one sigting of type 3. Pick the
+  lower of the two types seen twice: type 1.
+
+  FUNCTION DESCRIPTION:
+  migratoryBirds has the following parameters:
+    * int arr[n]: the types of birds sighted.
+
+  RETURNS:
+  int: the lowest type id of the most frequently sighted birds.
+  It is guarateed that each type is 1,2,3,4 or 5.
+*/
+
+function migratoryBirds (arr) {
+  let birds_type_seen = arr.sort().reduce((acc, el) => 
+    el === acc.lastColor 
+      ? {lastType: '', sights: acc.sights + 1}
+      : {lastType: el, sights: acc.sights}
+    , {lastColor: '', sights: 0})
+  console.log(birds_type_seen)
+}
+
+console.log(migratoryBirds([1,1,2,2,3]))
