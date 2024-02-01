@@ -1874,7 +1874,7 @@ function migratoryBirds (arr) {
 
 // console.log(migratoryBirds([1,4,4,4,5,3]))
 
-/* MAXIMUM PERIMETER TRIANGLE
+/* MAXIMUM PERIMETER TRIANGLE -----------------------------------------------
   Given an array of stick lengths, use 3 of them to construct a non-degenerate
   triangle with the maximum possible perimeter. Return an array of the lengths
   of its sides as 3 integers in non-decreasing order.
@@ -1920,7 +1920,7 @@ function maximumPerimeterTriangle(sticks) {
 
 // console.log(maximumPerimeterTriangle([1,2,3]))
 
-/* ZIG ZAG SEQUENCE
+/* ZIG ZAG SEQUENCE ---------------------------------------------------------
   In this challenge, the task is to debug the existing code to seccessfully
   execute all provided test files.
   
@@ -1957,19 +1957,120 @@ Here is the explanation without code:
   6. Increase the start with 1 and decrease end value with 1 simultaneously.
 */
 
-function findZigZagSequence (arr, n) {
-  let sorted_asc = arr.sort()
-  let max_value = sorted_asc[n-1]
-  let mid = Math.floor(n/2)
-  sorted_asc[n-1] = sorted_asc[mid]
-  sorted_asc[mid] = max_value
+function findZigZagSequence(arr, n) {
+  let mid = Math.floor((n + 1) / 2) - 1;
+  let sorted_asc = arr.sort();
+  [sorted_asc[n - 1], sorted_asc[mid]] = [sorted_asc[mid], sorted_asc[n - 1]];
 
-  let start = sorted_asc[mid+1]
-  let end = sorted_asc[n-1]
+  let start = mid + 1;
+  let end = n - 2;
 
-  while(start > end)
+  while (start <= end) {
+    [sorted_asc[start], sorted_asc[end]] = [sorted_asc[end], sorted_asc[start]];
+    start = start + 1;
+    end = end - 1;
+  }
 
-  return sorted_asc
+  return sorted_asc;
 }
 
-console.log(findZigZagSequence([2,3,5,1,4], 5));
+
+// console.log(findZigZagSequence([2,3,5,1,6,8,7,4,9], 9))
+
+/* DRAWING BOOK -------------------------------------------------------------
+  A teacher asks the class to open their books to a page number. A student can 
+  either start turning pages from the front of the book or from the back of
+  the book. They always turn pages one at a time. When they open the book, 
+  page 1 is always on the right side.
+
+  When they flip page 1 they see paes 2 and 3. Each page except the last page
+  will always be printed on both sides. The last page may only be printed on
+  the front, given the length of the book. If the book is n pages long, and a
+  student wants to turn to page p, what is the minimum number of pages to turn?
+  They can start at the beginning or the end of the book.
+
+  Given n and p, find and print the minumum number of pages that must be turned
+  in order to arrive at page p.
+
+  EXAMPLE:
+  n = 5
+  p = 3
+  
+  Using the diagram above, if the student wants to ger to page 3, they open the 
+  book to page 1, flip 1 page and they are on the correct page. If they open
+  the book to the last page, page 5, they turn 1 page and are at the correct
+  page. Return 1.
+
+  FUNCTION DESCRIPTION:
+  pageCount has the following parameters:
+    * int n: the number of pages in the book.
+    * int p: the page number to turn to.
+  
+  RETURN:
+  int: the minimum number of pages to turn.
+*/
+
+function pageCount (n,p) {
+  let frontPageGroup = Math.floor(p / 2); 5/2
+  let backPageGroup = Math.floor(n / 2); 6/2
+
+  return Math.min(frontPageGroup, (backPageGroup - frontPageGroup));
+}
+
+// console.log(pageCount(6,5))
+
+/* PICKING NUMBERS
+Given an array of integers, find the longest subarray where the absolute
+difference between any two elements is less than or equal to 1.
+
+EXAMPLE:
+a = [1,1,2,2,4,4,5,5,5]
+There are two subarrays meeting the criterion: [1,1,2,2] and [4,4,5,5,5]
+The maximum length subarray has 5 elements.
+
+FUNCTION DESCRIPTION:
+pickingNumbers has the following parameters:
+  * int a[n]: an array of integers.
+
+RETURNS:
+  * int: the length of the longest subarray that meets the criterion.
+*/
+
+function pickingNumbers (array) {
+  let sorted = array.sort()
+  let last_breakpoint = 0
+  let subarrays = []
+  for (let index = 0; index < sorted.length-1; index++) {
+    if (!Math.abs(sorted[index] - sorted[index + 1]) <= 1) {
+      subarrays.push(sorted.slice(0, index + 1).length)
+      last_breakpoint = index + 1
+    } 
+  }
+  subarrays.push(sorted.slice(last_breakpoint, sorted.length).length)
+  return Math.max(...subarrays)
+}
+ 
+
+console.log(pickingNumbers([1,1,2,2,4,4,5,5,5]))
+
+function pickingNumbers(a) {
+  const {maxStreak, currStreak} = a.sort((a,b)=>a-b).reduce(
+    ({maxStreak, currStreak, lastEl}, el) => {
+      if (lastEl > 0) {
+        if (Math.abs(el - lastEl) <= 1) {
+          currStreak++;
+        } else {
+          if (currStreak > maxStreak) {
+            maxStreak = currStreak;
+          }
+          lastEl = el;
+          currStreak = 0;
+        }
+      } else {
+        lastEl = el;    
+      }
+      return {maxStreak, currStreak, lastEl}
+  } ,{maxStreak: 0, currStreak: 0, lastEl: -1});
+  
+  return (currStreak > maxStreak ? currStreak : maxStreak) + 1;
+}
