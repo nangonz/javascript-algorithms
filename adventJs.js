@@ -2019,7 +2019,7 @@ function pageCount (n,p) {
 
 // console.log(pageCount(6,5))
 
-/* PICKING NUMBERS
+/* PICKING NUMBERS ------------------------------------------------------
 Given an array of integers, find the longest subarray where the absolute
 difference between any two elements is less than or equal to 1.
 
@@ -2058,9 +2058,9 @@ function pickingNumbers(a) {
   return (currStreak > maxStreak ? currStreak : maxStreak) + 1;
 }
 
-console.log(pickingNumbers([1,1,2,2,4,4,5,5,5]))
+// console.log(pickingNumbers([1,1,2,2,4,4,5,5,5]))
 
-/* LEFT ROTATION
+/* LEFT ROTATION ---------------------------------------------------------
   A left rotation operation on an array of size n shifts each of the array's
   elements 1 unit to the left. Given an integer "d" rotate the array that many 
   steps left and return the result.
@@ -2084,3 +2084,61 @@ console.log(pickingNumbers([1,1,2,2,4,4,5,5,5]))
   [1,2,3,4,5] -> [2,3,4,5,1] -> [3,4,5,1,2] -> [4,5,1,2,3] -> [5,1,2,3,4]
 
 */
+
+function rotateLeft(d, arr) {
+    for (let i = 0; i < d; i++){
+        arr.push(arr.shift());
+    }
+    return arr;
+}
+
+console.log(rotateLeft(4, [1,2,3,4,5]))
+
+function rotateLeftAlt (d, array) {
+  if (d == 0) return array
+  let n = array.length
+  let rotated_arr = new Array(n)
+
+  for (let i=0; i<n; i++) {
+    let newpos = i - 1
+    if (newpos < 0) newpos = n - 1
+    rotated_arr[newpos] = array[i]
+  }
+
+  return rotateLeft(d-1, rotated_arr)
+}
+
+
+/* NUMBER LINE JUMPS ----------------------------------------------------
+  You are choreographing a circus show with various animals. For one act,
+  you are given two kangaroos on a number line ready to jump in the positive
+  direction (towards positive infinity).
+
+    * The first kagaroo starts at location x1 and moves at a rate of v1 
+      meters per jump.
+    * The second kangaroo starts at location x2 and moves at a rate of v2
+      meters per jump.
+  
+  You have to figure out a way to get both kagaroos at the same location at
+  the same time as part of the show. If it is possible, return YES, otherwise
+  return NO.
+
+  EXAMPLE:
+  x1 = 2
+  v1 = 1
+  x2 = 1
+  v2 = 2
+  After one jump, they are both at x=3, (x1+v1=2+1, x2+v2=1+2), so the 
+  answer is YES.
+
+  FUNCTION DESCRIPTION:
+  kangaroo has the following parameters:
+    * int x1, int v1: starting position naf jump distance for kangaroo 1.
+    * int x2, int v2: starting position and jump distance for kangaroo 2.
+  
+  RETURNS: string either YES o NO.
+*/
+
+function kangaroo(x1, v1, x2, v2) {
+return ''
+}
