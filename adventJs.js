@@ -2034,24 +2034,7 @@ pickingNumbers has the following parameters:
 
 RETURNS:
   * int: the length of the longest subarray that meets the criterion.
-*/
-
-function pickingNumbers (array) {
-  let sorted = array.sort()
-  let last_breakpoint = 0
-  let subarrays = []
-  for (let index = 0; index < sorted.length-1; index++) {
-    if (!Math.abs(sorted[index] - sorted[index + 1]) <= 1) {
-      subarrays.push(sorted.slice(0, index + 1).length)
-      last_breakpoint = index + 1
-    } 
-  }
-  subarrays.push(sorted.slice(last_breakpoint, sorted.length).length)
-  return Math.max(...subarrays)
-}
- 
-
-console.log(pickingNumbers([1,1,2,2,4,4,5,5,5]))
+*/ 
 
 function pickingNumbers(a) {
   const {maxStreak, currStreak} = a.sort((a,b)=>a-b).reduce(
@@ -2074,3 +2057,5 @@ function pickingNumbers(a) {
   
   return (currStreak > maxStreak ? currStreak : maxStreak) + 1;
 }
+
+console.log(pickingNumbers([1,1,2,2,4,4,5,5,5]))
