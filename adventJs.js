@@ -2092,7 +2092,7 @@ function rotateLeft(d, arr) {
     return arr;
 }
 
-console.log(rotateLeft(4, [1,2,3,4,5]))
+// console.log(rotateLeft(4, [1,2,3,4,5]))
 
 function rotateLeftAlt (d, array) {
   if (d == 0) return array
@@ -2140,5 +2140,66 @@ function rotateLeftAlt (d, array) {
 */
 
 function kangaroo(x1, v1, x2, v2) {
-return ''
+  let kang_jumps = Math.max(x1,x2,v1,v2)
+  let kangaroo_pos1 = x1 
+  let kangaroo_pos2 = x2 
+
+  for(let jump=0; jump<kang_jumps; jump++) {
+    kangaroo_pos1 += v1
+    kangaroo_pos2 += v2
+    if(kangaroo_pos1 === kangaroo_pos2) return 'YES'
+  }
+
+  return 'NO'
+}
+
+// console.log(kangaroo(0,3,4,2))
+
+/*  SEPARATE THE NUMBERS --------------------------------------------------
+  A numeric string "s" is beautiful if it can be split into a sequence of two
+  or more positive integers, a[1], a[2],...,a[n], stisfying the following 
+  conditions:
+
+    1. a[1] - a[i-1] = 1 for any 1<i<=n (i.e., each element in the sequence
+      is 1 more than the previous element).
+
+    2. No a[i] contains a leading zero. For example, we can split s=10203
+      into the sequence {1,02,03} but it is not beautiful because 02 and 03
+       have leading zeroes.
+
+    3. The contents of the suquence cannot be rearrange. For example, we can
+      split s= 312 into the sequence {3,2,1} but it is not beautiful because
+      it breaks our first constraint (i.e., 1-3 != 1).
+
+  The diagram below depicts some beautiful strings:
+    * "1234" = "1"+ "2" + "3" + "4"
+    * "91011" = "91" + "10" + "11"
+    * "99100" = "99" + "100"
+  
+  Perform "q" queries where each query consist of some integer string "s"
+  For each query print whether or not the string id beautiful on a new line.
+  If it is beautiful print YES x, where "x" is the first number of the 
+  increasing suquence. If there are multiple such values of "x" choose
+  the smallest. Otherwise, print NO.
+
+  FUNCTION DESCRIPTION:
+  separateNumbers has the following parameters:
+   * s: an integer value represented as a string.
+
+  PRINTS:
+   * string: print a string as described above. Return nothing.
+
+  INPUT FORMAT:
+  The first line contains an intefer q, the number of strings to evaluate.
+  Each of the next q lines contains an integer string s to query.
+
+  CONSTRAINS:
+  * 1<=q<=10
+  * 1<=|s|<=32
+  * s[i] E [0-9]
+*/
+
+function separateNumbers(s) {
+    // Write your code here
+
 }
