@@ -2200,6 +2200,28 @@ function kangaroo(x1, v1, x2, v2) {
 */
 
 function separateNumbers(s) {
-    // Write your code here
+    if (s.length === 1) {
+        return "NO";
+    }
 
+    for (let i = 1; i <= Math.floor(s.length / 2); i++) {
+        const firstNumStr = s.slice(0, i);
+        const firstNum = BigInt(firstNumStr);
+        let currentNum = firstNum;
+        let currentStr = firstNum.toString();
+
+        while (currentStr.length < s.length) {
+            currentNum++;
+            currentStr += currentNum.toString();
+
+            if (currentStr === s) {
+                return "YES " + firstNumStr;
+            }
+        }
+    }
+
+    return "NO";
 }
+
+
+console.log(separateNumbers("90071992547409929007199254740993"))
