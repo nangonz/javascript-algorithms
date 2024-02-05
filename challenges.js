@@ -2202,16 +2202,20 @@ function kangaroo(x1, v1, x2, v2) {
 */
 
 function separateNumbers(s) {
+  // string cannot be split into a sequence of two or more positive integers
   if (s.length === 1) {
     return "NO";
   }
-
+  // first number length of beautiful sequence
+  // cannot be greater the half length of string
   for (let i = 1; i <= Math.floor(s.length / 2); i++) {
     const firstNumStr = s.slice(0, i)
     const firstNum = BigInt(firstNumStr)
     let currentNum = firstNum
     let currentStr = firstNum.toString()
 
+    // gets the substring thar represents the first number of 
+    // the sequence, BigInt is used to handle big numbers with presicion.
     while (currentStr.length < s.length) {
       currentNum++;
       currentStr += currentNum.toString()
@@ -2225,5 +2229,35 @@ function separateNumbers(s) {
 }
 
 
-console.log(separateNumbers("90071992547409929007199254740993"))
-console.log(separateNumbers("12345"))
+// console.log(separateNumbers("90071992547409929007199254740993"))
+// console.log(separateNumbers("12345"))
+
+/* CLOSEST NUMBERS ----------------------------------------------------------
+  Sorting is useful as the first step in many different tasks. The most commom
+  task is to make finding things easier, but there are other uses as well. In
+  this case, it will make it easier to determine which pair or pairs of elements
+  have the smallest absolute difference between them.
+
+  EXAMPLE:
+  arr = [5,2,3,4,1]
+  Several pairs have the minimum difference of 1:
+  [(1,2), (2,3), (3,4), (4,5)]
+  Return the array [1,2,2,3,3,4,4,5]
+
+  NOTE:
+  As shown in the example, pairs may overlap.
+  Given a list of unsorted integers, "arr", find the pair of elements that
+  have the smallest absolute difference between them. If there are multiple
+  pairs, find them all.
+
+  FUNCTION DESCRIPTION:
+  Complete the closestNumbers which has the following parameters:
+    * int arr[n]: an array of integers
+
+  RETURNS:
+    * int[]: an array of integers as describe.
+*/
+
+function closestNumbers (arr) {
+  return ""
+}

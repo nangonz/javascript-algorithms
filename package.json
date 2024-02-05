@@ -4,7 +4,7 @@
   "description": "hacker-rank challenges",
   "main": "adventJs.js",
   "scripts": {
-    "test": "node --watch adventJs"
+    "test": "node --watch challenges"
   },
   "repository": {
     "type": "git",
