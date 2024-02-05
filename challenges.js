@@ -2259,5 +2259,52 @@ function separateNumbers(s) {
 */
 
 function closestNumbers (arr) {
-  return ""
+  let sorted_arr = arr.sort((a,b)=> a-b)
+  let loop_len = sorted_arr.length - 1
+  let minimum_diference_pairs = []
+  let smallest_dif = Infinity
+
+  for (let ind=0; ind<loop_len; ind++) {
+    let curr_dif = Math.abs(sorted_arr[ind+1] - sorted_arr[ind])
+    if (curr_dif === smallest_dif){
+      minimum_diference_pairs.push(sorted_arr[ind])
+      minimum_diference_pairs.push(sorted_arr[ind+1])
+    } else if (curr_dif < smallest_dif) {
+      smallest_dif = curr_dif
+      minimum_diference_pairs = [sorted_arr[ind], sorted_arr[ind+1]]
+    }
+  }
+  return minimum_diference_pairs
 }
+
+function closestNumbersAlt (arr) {
+  return arr
+    .sort((a,b)=> a-b)
+    .reduce(({lastEl, min, minArr}, el, ind)=>{
+      if (ind > 0) {
+        let diff = el - lastEl
+        if(diff < min || min === null) {
+          min = diff
+          minArr = [lastEl, el]
+        } else if (diff === min){
+          minArr = [...minArr, lastEl, el]
+        }
+      }
+      return {lastEl: el, min, minArr}
+    }, {lastEl: null, min: null, minArr:[]}).minArr
+}
+
+console.log(closestNumbers([
+  -20,
+  -3916237, 
+  -357920, 
+  -3620601, 
+  7374819, 
+  -7330761, 
+  30,
+  6246457, 
+  -6461594, 
+  266854, 
+  -520, 
+  -470
+]))
