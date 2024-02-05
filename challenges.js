@@ -2294,6 +2294,7 @@ function closestNumbersAlt (arr) {
     }, {lastEl: null, min: null, minArr:[]}).minArr
 }
 
+/*
 console.log(closestNumbers([
   -20,
   -3916237, 
@@ -2308,6 +2309,7 @@ console.log(closestNumbers([
   -520, 
   -470
 ]))
+*/
 
 /*  TOWER BREAKERS ----------------------------------------------------
   Two players are playing a game of Tower Breakers! Player 1 always 
@@ -2334,7 +2336,7 @@ console.log(closestNumbers([
   Let player 1 remove 3. Now the towers are 3 and 6 units tall.
   Player 2 matches the move. NOw the towers are both 3 units tall.
   Now player 1 has only one move.
-  Player 1 removes 2 pieces leaving 1. Towers are 1 and 2 units tall.
+  Player 1 removes 2 pieces leaving 1. Towers are 1 and 3 units tall.
   Player 2 matches again. Towers are both 1 unit tall.
   Player 1 has no move and loses. Return 2
 
@@ -2345,4 +2347,15 @@ console.log(closestNumbers([
   
   RETURN:
     * int: the winner of the game.
+
+  tenemos n torres de altura m
+  2 jugadores que van alternando
+  en cada turno pueden reducir la altura de una
+  torre en una cantidad 1<=y<x y que divide x de manera pareja
 */
+
+function towerBreakers(n, m) {
+  return (n%2==0||m==1)?2:1;
+}
+
+console.log(2, 6)
