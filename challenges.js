@@ -2359,3 +2359,27 @@ function towerBreakers(n, m) {
 }
 
 console.log(2, 6)
+
+/* MINIMUM ABSOLUTE DIFFERENCE IN AN ARRAY -----------------------------
+  The absolute difference is the positive between two values "a" and "b"
+  is written |a-b| or |b-a| and they are equal. If a=3 and b=2,
+  |3-2|-|2-3|=1. Given an array of integers, find the minimum absolute
+  difference between any two elements in the array.
+
+  EXAMPLE: arr = [-2,2,4]
+  There are 3 pairs of numbers: |-2,2|, |-2,4| and |2,4|
+  The absolute differences for these pairs are 
+  |(-2)-2|= 4
+  |(-2)-4|= 6
+  |2-4|= 2
+  The minimum absolute difference is 2.
+
+  FUNCTION DESCRIPTION:
+  It should return an integer that represents the minimum absolute
+  difference between any pair of elements. The function has the following
+  parameters:
+    * int arr[n]: an array of integers.
+
+  RETURNS:
+    * int: the minimum absolute difference found
+*/
