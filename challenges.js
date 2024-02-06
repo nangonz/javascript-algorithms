@@ -2407,3 +2407,35 @@ function minimumAbsDiffAlt (arr) {
 }
 
 console.log(minimumAbsDiffAlt([-2,2,4]))
+
+/* CAESAR CIPHER
+  Julius Caesar protected his confidential information by encrypting it 
+  using a cipher. Caesar's cipher shifts eaxh letter by a number of letters
+  If the shift takes you past the end of the alphaber, just rotate back to
+  the front of the alphaber. In the case of a rotation by 3 w,x,y and z 
+  woulf map to z, a, b and c.
+
+  Original Alphabet: abcdefghijklmnopqrstuvwxyz
+  Alphabet rotated: defghijklmnopqrstuvwxyzabc
+
+  EXAMPLE:
+  s= There's-a-starman-waiting-in-the-sky
+  k= 3
+
+  The alphabet is rotated by 3, matching the mapping above. The encrypted
+  string is: Wkhuh'v-d-vwdupdq-zdlwlqj-lq-wkh-vnb
+  NOTE: The cipher only encrypts letters; symbols, such as - remain unencrypted
+
+  FUNCTION DESCRIPTION:
+  caesarCipher has the following parameters:
+    * string s: clear text
+    * int k: the alphabet rotation factor
+  
+  RETURN:
+  string: the encrypted string
+*/
+
+function caesarCipher(s, k) {
+    // Write your code here
+
+}
