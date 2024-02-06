@@ -2358,7 +2358,7 @@ function towerBreakers(n, m) {
   return (n%2==0||m==1)?2:1;
 }
 
-console.log(2, 6)
+// console.log(2, 6)
 
 /* MINIMUM ABSOLUTE DIFFERENCE IN AN ARRAY -----------------------------
   The absolute difference is the positive between two values "a" and "b"
@@ -2383,3 +2383,27 @@ console.log(2, 6)
   RETURNS:
     * int: the minimum absolute difference found
 */
+
+function minimumAbsoluteDifference(arr) {
+  let abs_dif = []
+  let sorted_arr = arr.sort((a,b)=> a-b)
+  console.log(sorted_arr)
+  
+  for (let i=0; i<sorted_arr.length-1; i++){
+      abs_dif.push(Math.abs(sorted_arr[i] - sorted_arr[i+1]))
+  }
+  return Math.min(...abs_dif)
+}
+
+function minimumAbsDiffAlt (arr) {
+  return arr.sort((a,b)=> a-b).reduce(({prev, minDiff}, curr)=>{
+    let diff = Math.abs(curr - prev)
+    return {
+      prev: curr,
+      minDiff: diff < minDiff ? diff : minDiff
+    }
+
+  }, {prev: 0, minDiff: Infinity}).minDiff
+}
+
+console.log(minimumAbsDiffAlt([-2,2,4]))
