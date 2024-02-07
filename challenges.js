@@ -2406,7 +2406,7 @@ function minimumAbsDiffAlt (arr) {
   }, {prev: 0, minDiff: Infinity}).minDiff
 }
 
-console.log(minimumAbsDiffAlt([-2,2,4]))
+// console.log(minimumAbsDiffAlt([-2,2,4]))
 
 /* CAESAR CIPHER
   Julius Caesar protected his confidential information by encrypting it 
@@ -2433,9 +2433,31 @@ console.log(minimumAbsDiffAlt([-2,2,4]))
   
   RETURN:
   string: the encrypted string
+  k = 6  n = 28
+  32 - 26 = 6
 */
 
-function caesarCipher(s, k) {
-    // Write your code here
+function caesarCipher(message, k) {
+  const alphabet = "abcdefghijklmnopqrstuvwxyz"
+  const alp_len = alphabet.length
+  let ciphered_msg = ""
 
+    for (let letter of message) {
+      let is_uppercase = (/[A-Z]/).test(letter)
+      let alp_pos = alphabet.indexOf(letter.toLowerCase())
+      let cipher_pos = (alp_pos + (k%alp_len)) >= alp_len
+        ? alp_pos + (k%alp_len) - alp_len
+        : alp_pos + (k%alp_len)
+      
+      if(letter.match(/[A-Za-z]/g)) {
+        is_uppercase 
+          ? ciphered_msg += alphabet[cipher_pos].toUpperCase() 
+          : ciphered_msg += alphabet[cipher_pos]
+      } else {
+        ciphered_msg += letter
+      }
+    }
+  return ciphered_msg
 }
+
+console.log(caesarCipher("www.abc.xy",87))
