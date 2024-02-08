@@ -2563,4 +2563,23 @@ console.log(maxMin(2, [1,4,7,2]))
     lower_case = "abcdefghijklmnopqrstuvwxxyz"
     upper_case = "ABCDEFGHIJKLMNOPQRSTYVWXYZ"
     special_characters = "!@#$%^&*()-+"
+
+  EXAMPLE:
+  password = "2bbbb"
+  This password is 5 characters long and is missing an uppercase and a special
+  character. The minimum number of characters to add is 2.
+  password = "2bb#A"
+  This password is 5 characters long and has at least one of each character
+  type. The minimum number of characters to add is 1.
+
+  FUNCITON DESCRIPTION:
+  minimumNumber function has the following parameters:
+    * int n: the length of the password.
+    * string password: the password to test.
+  
+  RETURNS:
+    * int: the minimum number of characters to add
+  CONSTRAINS:
+    * 1 <= n <= 100
+    * All characters in password are in [a-z], [0-9], or [!@#$%^&*()-+]
 */
