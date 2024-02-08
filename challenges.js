@@ -2583,3 +2583,7 @@ console.log(maxMin(2, [1,4,7,2]))
     * 1 <= n <= 100
     * All characters in password are in [a-z], [0-9], or [!@#$%^&*()-+]
 */
+
+function minimumNumber (n, password) {
+  return n
+}
