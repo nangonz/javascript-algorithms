@@ -2525,5 +2525,17 @@ function caesarCipherAlt (message, k) {
   EXPLANATION:
   Here K=4; selecting th 4 integers 1,2,3,4, unfairness equals.
   max(1,2,3,4) - min(1,2,3,4) = 4-1 = 3
-
 */
+
+function maxMin (k, arr) {
+  let sorted_arr = [...arr].sort((a,b)=>a-b)
+  let result = []
+  
+  for (let i=0; i<=sorted_arr.length - k; i++) {
+    let diff = sorted_arr[i+k-1] - sorted_arr[i]
+    result.push(diff)
+  }
+  return Math.min(...result)
+}
+
+console.log(maxMin(2, [1,4,7,2]))
