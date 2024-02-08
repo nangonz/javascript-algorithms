@@ -2408,7 +2408,7 @@ function minimumAbsDiffAlt (arr) {
 
 // console.log(minimumAbsDiffAlt([-2,2,4]))
 
-/* CAESAR CIPHER
+/* CAESAR CIPHER --------------------------------------------------------
   Julius Caesar protected his confidential information by encrypting it 
   using a cipher. Caesar's cipher shifts eaxh letter by a number of letters
   If the shift takes you past the end of the alphaber, just rotate back to
@@ -2460,7 +2460,7 @@ function caesarCipher(message, k) {
   return ciphered_msg
 }
 
-console.log(caesarCipher("www.abc.xy",87))
+// console.log(caesarCipher("www.abc.xy",87))
 
 function caesarCipherAlt (message, k) {
   const alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -2473,7 +2473,7 @@ function caesarCipherAlt (message, k) {
       let idx = alphabet.indexOf(letter)
       if(idx != -1) {
         return alp_lowerarr[
-          idx + k > alphabet.length -1
+          idx + k > alphabet.length
             ? idx + k - alphabet.length
             : idx + k
         ]
@@ -2481,7 +2481,7 @@ function caesarCipherAlt (message, k) {
       idx = alp_upperarr.indexOf(letter)
       if(idx != -1) {
         return alp_upperarr[
-          idx + k > alphabet.length - 1
+          idx + k > alphabet.length
             ? idx + k - alphabet.length
             : idx + k
         ]
@@ -2491,4 +2491,24 @@ function caesarCipherAlt (message, k) {
   ).join("")
 }
 
-console.log(caesarCipherAlt("www.abc.xy",87))
+// console.log(caesarCipherAlt("www.abc.xy",87))
+
+/* MAXMIN -------------------------------------------------------------
+  You will be given a list of integers, "arr" and a single integer "k".
+  You must create an array of length "k" from elements of "arr" such that
+  its unfairnes is minimized. Call that array "arr'".Unfairness of an array
+  is calculated as:
+
+  max(arr') - min(arr')
+
+  Where:
+    * max denotes the largest integer in arr'
+    * min denotes the smallest integer in arr'
+  
+  EXAMPLE:
+  arr = [1,4,7,2]
+  k = 2
+  Pick any two elements say arr' = [4,7]
+  unfairness = max(4,7) - min(4,7) = 7 - 4 = 3
+
+*/
