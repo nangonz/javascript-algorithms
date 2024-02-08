@@ -2539,3 +2539,28 @@ function maxMin (k, arr) {
 }
 
 console.log(maxMin(2, [1,4,7,2]))
+
+/* STRONG PASSWORD
+  Louise joined a social networking site to stay in touch with her friends
+  The signup page required her to input a name and a password. However, the 
+  password must be strong. The website considers a password to be strong if 
+  it sastisfies the following criteria:
+
+    * Its length is at least 6
+    * It contains at least one digit
+    * It contains at least one lowecase English character.
+    * It contains at least one uppercase English character.
+    * It contains at least one special character. The special character are:
+      - !@#$%^&*()-+
+  
+  She typed a random string of length "n" in the password field but wasn't sure
+  if it was strong. Given the string she typed, can you find the minimum number
+  of characters she must add to make her password strong?
+  NOTE: Here's the set of types of characters in a form you can paste in your
+  solution:
+
+    numbers = "01234566789"
+    lower_case = "abcdefghijklmnopqrstuvwxxyz"
+    upper_case = "ABCDEFGHIJKLMNOPQRSTYVWXYZ"
+    special_characters = "!@#$%^&*()-+"
+*/
