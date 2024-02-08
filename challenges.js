@@ -2510,5 +2510,20 @@ function caesarCipherAlt (message, k) {
   k = 2
   Pick any two elements say arr' = [4,7]
   unfairness = max(4,7) - min(4,7) = 7 - 4 = 3
+  Testing for all pairs, the solution [1,2] provides the minimum unfairness
+
+  NOTE: Integers in arr may not be unique.
+
+  FUNCTION DESCRIPTION:
+  maxMin function has the following parameters:
+    * int k: the number of elements to select.
+    * int arr[n]: an array of integers.
+  
+  RETURN:
+  int: the minimum possible unfairness.
+
+  EXPLANATION:
+  Here K=4; selecting th 4 integers 1,2,3,4, unfairness equals.
+  max(1,2,3,4) - min(1,2,3,4) = 4-1 = 3
 
 */
