@@ -2461,3 +2461,34 @@ function caesarCipher(message, k) {
 }
 
 console.log(caesarCipher("www.abc.xy",87))
+
+function caesarCipherAlt (message, k) {
+  const alphabet = "abcdefghijklmnopqrstuvwxyz"
+  const alp_lowerarr = alphabet.split("")
+  const alp_upperarr = alphabet.toUpperCase().split("")
+  k = k % alphabet.length
+
+  return message.split("").map(
+    (letter)=>{
+      let idx = alphabet.indexOf(letter)
+      if(idx != -1) {
+        return alp_lowerarr[
+          idx + k > alphabet.length -1
+            ? idx + k - alphabet.length
+            : idx + k
+        ]
+      }
+      idx = alp_upperarr.indexOf(letter)
+      if(idx != -1) {
+        return alp_upperarr[
+          idx + k > alphabet.length - 1
+            ? idx + k - alphabet.length
+            : idx + k
+        ]
+      }
+      return letter
+    }
+  ).join("")
+}
+
+console.log(caesarCipherAlt("www.abc.xy",87))
