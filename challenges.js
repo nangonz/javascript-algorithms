@@ -2634,5 +2634,29 @@ function minimumNumber (n, password) {
 
   CONSTRAINTS:
     * It is guaranteed that query type 2 will never query an empty array or index.
-
 */
+
+function dynamicArray (n, queries) {
+  // let twodim_arr = new Array(n). fill([])
+  let twodim_arr = Array.from({ length: n }, () => []);
+  let lastAnswer = 0
+  let result = []
+
+  for (let query of queries) {
+    let queryType = Number(query[0])
+    let x = Number(query[1])
+    let y = Number(query[2])
+
+    if(queryType == 1) {
+      let idx = ((x ^ lastAnswer) % n)
+      twodim_arr[idx].push(y)
+    } else if(queryType == 2) {
+      let idx = ((x ^ lastAnswer) % n)
+      lastAnswer = twodim_arr[idx][y% twodim_arr[idx].length]
+      result.push(lastAnswer)
+    }
+  }
+  return result
+}
+
+console.log(dynamicArray(2, ["105", "117", "103", "210", "211"]))
