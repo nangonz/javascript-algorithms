@@ -2538,7 +2538,7 @@ function maxMin (k, arr) {
   return Math.min(...result)
 }
 
-console.log(maxMin(2, [1,4,7,2]))
+// console.log(maxMin(2, [1,4,7,2]))
 
 /* STRONG PASSWORD
   Louise joined a social networking site to stay in touch with her friends
@@ -2585,5 +2585,17 @@ console.log(maxMin(2, [1,4,7,2]))
 */
 
 function minimumNumber (n, password) {
-  return n
+  let has_len = n >= 6
+  let has_digit = /[0-9]/.test(password)
+  let has_upper = /[A-Z]/.test(password)
+  let has_lower = /[a-z]/.test(password)
+  let has_spec = /[!@#$%^&*()\-\+]/.test(password)
+  let conditions_arr = [has_digit, has_upper, has_lower, has_spec]
+  console.log(conditions_arr)
+
+  return n >= 6
+    ? conditions_arr.filter(el=> el === false).length 
+    : Math.max(conditions_arr.filter(el=> el === false).length, 6-n )
 }
+
+// console.log(minimumNumber(7, "AUzs-nV"))
