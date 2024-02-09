@@ -2582,6 +2582,10 @@ function maxMin (k, arr) {
   CONSTRAINS:
     * 1 <= n <= 100
     * All characters in password are in [a-z], [0-9], or [!@#$%^&*()-+]
+  ADITIONAL NOTE: remember that certain symbols have a special meanings in
+  regular expressions. To avoid some issues, you can indicate that it's a 
+  literal character and doesn't have a special meaning within the brackets
+  of regular expression using backslash"\".
 */
 
 function minimumNumber (n, password) {
