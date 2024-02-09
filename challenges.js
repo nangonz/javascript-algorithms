@@ -2708,3 +2708,25 @@ function dynamicArrayAlt(n, queries) {
   RETURNS:
     * int[]: an array of integers.
 */
+
+function missingNumbers(arr, brr) {
+  let missing_num = new Set
+  let original_arr = [...new Set(brr)]
+
+  for (let int of original_arr) {
+    let isMissing = arr.indexOf(int) === -1
+    if (isMissing) {
+      missing_num.add(int)
+    } else {
+      let orig_times = brr.filter((el)=> el === int).length
+      let copy_times = arr.filter((el)=> el === int).length
+      if (orig_times > copy_times) missing_num.add(int)
+    }
+  }
+  return [...missing_num].sort((a,b)=>a-b)
+}
+
+console.log(missingNumbers(
+  [11,4,11,7,13,4,12,11,10,14],
+  [11,4,11,7,3,7,10,13,4,8,12,11,10,14,12]
+))
