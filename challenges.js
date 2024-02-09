@@ -2540,7 +2540,7 @@ function maxMin (k, arr) {
 
 // console.log(maxMin(2, [1,4,7,2]))
 
-/* STRONG PASSWORD
+/* STRONG PASSWORD -------------------------------------------------------
   Louise joined a social networking site to stay in touch with her friends
   The signup page required her to input a name and a password. However, the 
   password must be strong. The website considers a password to be strong if 
@@ -2604,7 +2604,7 @@ function minimumNumber (n, password) {
 
 // console.log(minimumNumber(7, "AUzs-nV"))
 
-/* DYNAMIC ARRAY
+/* DYNAMIC ARRAY ---------------------------------------------------------
   * Declate a 2-dimensional array, arr, of n empty arrays. All arrays are
     zero indexed.
   * Declare an integer, "lastAnswer", and initialize it to ()
@@ -2634,18 +2634,20 @@ function minimumNumber (n, password) {
 
   CONSTRAINTS:
     * It is guaranteed that query type 2 will never query an empty array or index.
+
+  (*1)_ When you do new Array(n).fill([]), you're creating an array of length 
+  n, where each element is a reference to the same empty array. In other words, 
+  elements are pointing to the same array object in memory.
 */
 
 function dynamicArray (n, queries) {
-  // let twodim_arr = new Array(n). fill([])
+  // let twodim_arr = (new Array(n)). fill([]) (*1)
   let twodim_arr = Array.from({ length: n }, () => []);
   let lastAnswer = 0
-  let result = []
+  let answers = []
 
   for (let query of queries) {
-    let queryType = Number(query[0])
-    let x = Number(query[1])
-    let y = Number(query[2])
+    let [queryType, x, y] = query
 
     if(queryType == 1) {
       let idx = ((x ^ lastAnswer) % n)
@@ -2653,10 +2655,28 @@ function dynamicArray (n, queries) {
     } else if(queryType == 2) {
       let idx = ((x ^ lastAnswer) % n)
       lastAnswer = twodim_arr[idx][y% twodim_arr[idx].length]
-      result.push(lastAnswer)
+      answers.push(lastAnswer)
     }
   }
-  return result
+  return answers
 }
 
-console.log(dynamicArray(2, ["105", "117", "103", "210", "211"]))
+// console.log(dynamicArray(2, ["105", "117", "103", "210", "211"]))
+
+function dynamicArrayAlt(n, queries) {
+  const arr = (new Array(n)).fill([]);
+        
+  return queries.reduce(
+    ({lastAnswer, answers}, [type, x, y]) => {
+      const idx = (x ^ lastAnswer) % n;
+      if (type == 1){
+        arr[idx] = [...arr[idx], y];
+      } else {
+        lastAnswer = arr[idx][y % arr[idx].length];
+        answers.push(lastAnswer);
+      }
+      return {lastAnswer, answers} 
+    }, {lastAnswer: 0, answers: []}).answers;
+}
+
+// console.log(dynamicArrayAlt(2, ["105", "117", "103", "210", "211"]))
