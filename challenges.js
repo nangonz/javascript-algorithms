@@ -2726,7 +2726,38 @@ function missingNumbers(arr, brr) {
   return [...missing_num].sort((a,b)=>a-b)
 }
 
-console.log(missingNumbers(
-  [11,4,11,7,13,4,12,11,10,14],
-  [11,4,11,7,3,7,10,13,4,8,12,11,10,14,12]
-))
+// console.log(missingNumbers(
+//   [11,4,11,7,13,4,12,11,10,14],
+//   [11,4,11,7,3,7,10,13,4,8,12,11,10,14,12]
+// ))
+
+/* THE FULL COUNTING SORT ----------------------------------------------
+  Use the counting sort to order a list of strings associated with integers.
+  If two strings are associated with the same integer, they must be printed
+  in their original order, i.e. your sorting algorithm should be stable. 
+  There is one other twist: strings in the first half of the array are to be 
+  replaced with the character - (dash, ascii 45 decimal).
+
+  Insertion Sort and the simple version of Quicksort are stable, but the faster
+  in-place version of Quicksort in not since it scrambles around while sorting.
+  Design your counting sort to be stable.
+
+  EXAMPLE:
+  arr = [[0,"a"], [1,"b"], [0,"c"], [1,"d"]]
+  The first two strings are replaced with "-". Since the maximum associanted 
+  integer is 1, set up a helper array with at least two empty arrays as 
+  elements. The following shows the insertions into an array of three empty
+  arrays.
+
+  i   string   converted   list
+  0                        [[],[],[]]
+  1     a       -          [[ ],[],[]]
+  2     b       -          [[ ],[ ],[]]
+  3     c                  [[ , ],[ ],[]]
+  4     d                  [[ , ],[ , ],[]]
+
+  The result is then printed: -c -d.
+  
+
+
+*/
