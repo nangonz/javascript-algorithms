@@ -2624,4 +2624,15 @@ function minimumNumber (n, password) {
   in most languages. % is the modulo operator. Finally, size(arr[idx]) is the
   number of elements in arr[idx].
 
+  FUNCTION DESCRIPTION:
+  dynamicArray has the following parameters:
+    * int n: the number of empty arrays to initialize in arr.
+    * string queries[q]: query strings that contains 3 space-separated integers.
+  
+  RETURNS:
+    * int[]: the results of each type 2 query in the order they are presented.
+
+  CONSTRAINTS:
+    * It is guaranteed that query type 2 will never query an empty array or index.
+
 */
