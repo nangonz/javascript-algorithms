@@ -2768,6 +2768,10 @@ function missingNumbers(arr, brr) {
 
   NOTE: the first elements of each arr[i], x, must be cast as an integer to
   perform the sort.
-
-
 */
+
+function countingSort (arr) {
+  return
+}
+
+console.log(countinSort([[0,"a"], [1,"b"], [0,"c"], [1,"d"]]))
