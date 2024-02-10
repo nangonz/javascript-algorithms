@@ -2770,13 +2770,15 @@ function missingNumbers(arr, brr) {
   perform the sort.
 */
 
-function countingSort (arr) {
+function countSort (arr) {
   let len = arr.length
-  return arr
+  let result = arr
     .map((el,idx)=> idx < len/2 ? [el[0], "-"]: el)
     .sort((a,b)=> parseInt(a[0]) < parseInt(b[0]) ? -1 : 1)
     .map(el => el[1])
-    .join("")
+    .join(" ")
+    
+  return result
 }
 
-console.log(countingSort([[0,"a"], [1,"b"], [0,"c"], [1,"d"]]))
+console.log(countSort([[0,"a"], [1,"b"], [0,"c"], [1,"d"]]))
