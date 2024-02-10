@@ -2744,17 +2744,17 @@ function missingNumbers(arr, brr) {
 
   EXAMPLE:
   arr = [[0,"a"], [1,"b"], [0,"c"], [1,"d"]]
-  The first two strings are replaced with "-". Since the maximum associanted 
+  The first two strings are replaced with "-". Since the maximum associated 
   integer is 1, set up a helper array with at least two empty arrays as 
   elements. The following shows the insertions into an array of three empty
   arrays.
 
   i   string   converted   list
   0                        [[],[],[]]
-  1     a       -          [[ ],[],[]]
-  2     b       -          [[ ],[ ],[]]
-  3     c                  [[ , ],[ ],[]]
-  4     d                  [[ , ],[ , ],[]]
+  1     a       -          [[-],[],[]]
+  2     b       -          [[-],[-],[]]
+  3     c                  [[-,c],[-],[]]
+  4     d                  [[-,c],[-,d],[]]
 
   The result is then printed: -c -d.
   
