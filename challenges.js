@@ -2758,6 +2758,16 @@ function missingNumbers(arr, brr) {
 
   The result is then printed: -c -d.
   
+  FUNCTION DESCRIPTION:
+  The function should construct and print the sorted strings.
+  countSort has the following parameters:
+    * string arr[n][2]: each arr[i] is comprised of two strings, x and s
+
+  RETURNS:
+    * Print the finished array with each elements separated by a single space.
+
+  NOTE: the first elements of each arr[i], x, must be cast as an integer to
+  perform the sort.
 
 
 */
