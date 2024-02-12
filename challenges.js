@@ -2816,3 +2816,18 @@ console.log(
   RETURNS:
     * string: either YES or NO.
 */
+
+function gridChallenge (grid) {
+  let row_str_alph = grid.map((el)=> [...el].sort().join(""))
+
+  for (let i=0; i<grid.length; i++) {
+    let column_string = row_str_alph.map(el=> el[i]).join("")
+    let is_alph_order = column_string === [...column_string].sort().join("")
+    if (!is_alph_order) return "NO"
+  }
+  return "YES"
+}
+
+// console.log(gridChallenge(['ebacd', 'fghij', 'olmkn', 'trpqs', 'xywuv']))
+console.log(gridChallenge(['kc', 'iu']))
+console.log(gridChallenge(['uxf', 'vof', 'hmp']))
