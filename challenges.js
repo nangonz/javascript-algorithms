@@ -2810,4 +2810,9 @@ console.log(
   order, so the answer would be YES. Only elements within the same row can be 
   rearranged. Thet cannot be moved to a different row.
 
+  FUNCTION DESCIRPTION:
+  gridChallenge has the following parameters:
+    * string grid[n]: an array of strings
+  RETURNS:
+    * string: either YES or NO.
 */
