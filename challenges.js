@@ -2800,4 +2800,14 @@ console.log(
   ascending alphabetical order, top to bottom. Return YES if they are or NO if
   thet aren't.
 
+  EXAMPLE:
+  grid = ["abc", "ade", "efg"]
+  The grid is illustrated below:
+  a b c
+  a d e
+  e f g
+  The rows are already in alphabetical order. The columns are also in alphabetical
+  order, so the answer would be YES. Only elements within the same row can be 
+  rearranged. Thet cannot be moved to a different row.
+
 */
