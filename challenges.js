@@ -2873,4 +2873,10 @@ function sansaXor(arr) {
   element that meets the criterion. If there is, return YES. Otherwise, return
   NO.
 
+  FUNTION DESCRIPTION:
+  balancedSums has the following parameters:
+    * int arr[n]: an array of integers.
+
+  RETURNS:
+    * string: either YES or NO.
 */
