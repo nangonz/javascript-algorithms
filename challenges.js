@@ -2880,3 +2880,7 @@ function sansaXor(arr) {
   RETURNS:
     * string: either YES or NO.
 */
+
+function balancedSum (arr) {
+  
+}
