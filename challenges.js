@@ -2828,6 +2828,40 @@ function gridChallenge (grid) {
   return "YES"
 }
 
-// console.log(gridChallenge(['ebacd', 'fghij', 'olmkn', 'trpqs', 'xywuv']))
-console.log(gridChallenge(['kc', 'iu']))
-console.log(gridChallenge(['uxf', 'vof', 'hmp']))
+// console.log(gridChallenge(['kc', 'iu']))
+// console.log(gridChallenge(['uxf', 'vof', 'hmp']))
+
+/* SANSA AND XOR
+  Sansa tiene un arreglo. Ella quiere encontrar el valor obtenido haciendo XOR
+  a los subarreglos continuos, seguidos por el resultado de hacer XOR a los
+  valores obtenidos. Puedes ayudarla en esta tarea?
+
+  NOTA: [1,2,3] es un subarreglo continuo de [1,2,3,4] mientras que [1,2,4] no
+  lo es.
+
+    * La primera línea contiene el número T de los casos de prueba.
+    * La primera línea de cada prueba contiene un entero N. Número de los elementos
+      del arreglo.
+    * La segunda línea de cada prueba contiene N enteros, que son los elementos
+      del arreglo.
+*/
+
+function sansaXor(arr) {
+  if (arr.length % 2 === 0) return 0;
+  let nSet = new Set();
+
+  for (let i = 0; i < arr.length; i += 2){
+    nSet.has(arr[i]) ? nSet.delete(arr[i]): nSet.add(arr[i]);
+  }
+  return [...nSet]
+    .reduce((acc, el) => acc === null ? el : acc ^ el, 0);
+}
+
+// console.log(sansaXor([1,2,3,4,5,6,7]))
+
+/*  SHERLOCK AND ARRAY
+  Watson gives Sherlock an array of integers. His challenge is to find an 
+  element of the array such that the sum of all elements to the left is equal
+  to the sum of all elements to the right.
+
+*/
