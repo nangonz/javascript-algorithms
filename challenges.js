@@ -2881,6 +2881,17 @@ function sansaXor(arr) {
     * string: either YES or NO.
 */
 
-function balancedSum (arr) {
-  
+function balancedSums(arr) {
+    let sumLeft = 0;
+    let sumRigth = arr.reduce((acc, cur) => acc + cur);
+    for(let i = 0; i < arr.length; i++) {
+     sumLeft += arr[i - 1] || 0;
+     sumRigth -= arr[i];
+     if(sumRigth === sumLeft) return "YES";
+    }
+    return "NO"
 }
+
+console.log(balancedSums([1,1,4,1,1]))
+console.log(balancedSums([2,0,0,0]))
+console.log(balancedSums([0,0,2,0]))
