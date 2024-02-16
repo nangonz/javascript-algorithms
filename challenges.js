@@ -2921,4 +2921,11 @@ console.log(balancedSums([0,0,2,0]))
   choose the pile with 2 left. If player 2 chooses a pile of 2, player 1 chooses 1
   from the remaining pile leaving the last stone for player 2. Return "First".
 
+  FUNCTION DESCRIPTION:
+  misereNim has the following parameters:
+    * int s[n]: the number of stones in each pile.
+
+  RETURNS:
+    * stirng: wither First or Second.
+
 */
