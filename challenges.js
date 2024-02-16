@@ -2963,4 +2963,15 @@ the name of the winner on a new line "ANDY" or "BOB".
 To continue the example above, in the next move Andy will remove 3. Bob will then
 remove 2 and win because there are no more integers to remove.
 
+FUNCTION DESCRIPTION:
+gamingArray function has the following parameters:
+  * int arr[n]: an array of integers.
+
+RETURNS:
+  * string: either ANDY or BOB.
 */
+
+function gamingArray(arr) {
+    // Write your code here
+
+}
