@@ -2946,3 +2946,21 @@ function misereNim(s){
 }
 
 console.log(misereNim([9,8,4,4,4,7]))
+
+/* GAMING ARRAY --------------------------------------------------------------
+Andy wants to play a gamae with his little brother, Bob. The game starts with 
+an array of distinct integers and the rules are as follow:
+
+  * Bob always plays first.
+  * In a single move, a player chooses the maximum element in the array.
+    He removes it and all elements to its right. For example, if the starting
+    array arr = [2,3,5,4,1] the it becomes arr' = [2,3] after removing [5,4,1]
+  * The two players alternate turns.
+  * The last player who can make a move wins.
+
+Andy and Bob play "g" games. Given the initial array for each game, find and print
+the name of the winner on a new line "ANDY" or "BOB".
+To continue the example above, in the next move Andy will remove 3. Bob will then
+remove 2 and win because there are no more integers to remove.
+
+*/
