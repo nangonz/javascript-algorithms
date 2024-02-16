@@ -2945,7 +2945,7 @@ function misereNim(s){
   return xor === 0 ? "Second" : "First";
 }
 
-console.log(misereNim([9,8,4,4,4,7]))
+// console.log(misereNim([9,8,4,4,4,7]))
 
 /* GAMING ARRAY --------------------------------------------------------------
 Andy wants to play a gamae with his little brother, Bob. The game starts with 
@@ -2972,6 +2972,14 @@ RETURNS:
 */
 
 function gamingArray(arr) {
-    // Write your code here
-
+    let max = 0
+    const temp = arr.filter((v)=>{
+      if(v>max){
+        max=v
+        return v
+      }
+    })
+    return temp.length % 2 ? 'BOB' : 'ANDY'
 }
+
+console.log(gamingArray([2,3,5,4,1]))
