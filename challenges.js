@@ -2973,10 +2973,10 @@ RETURNS:
 
 function gamingArray(arr) {
     let max = 0
-    const temp = arr.filter((v)=>{
-      if(v>max){
-        max=v
-        return v
+    const temp = arr.filter((int)=>{
+      if(int>max){
+        max=int
+        return int
       }
     })
     return temp.length % 2 ? 'BOB' : 'ANDY'
