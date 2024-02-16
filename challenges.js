@@ -2892,11 +2892,11 @@ function balancedSums(arr) {
     return "NO"
 }
 
-console.log(balancedSums([1,1,4,1,1]))
-console.log(balancedSums([2,0,0,0]))
-console.log(balancedSums([0,0,2,0]))
+// console.log(balancedSums([1,1,4,1,1]))
+// console.log(balancedSums([2,0,0,0]))
+// console.log(balancedSums([0,0,2,0]))
 
-/*  MISERE NIM
+/*  MISERE NIM ----------------------------------------------------------------
   Two people are playing game of Misere Nim. The basic rules for this game are
   as follows:
 
@@ -2926,6 +2926,23 @@ console.log(balancedSums([0,0,2,0]))
     * int s[n]: the number of stones in each pile.
 
   RETURNS:
-    * stirng: wither First or Second.
+    * stirng: wither First or Second.´
+
+  SOLUTION EXPLANATION:
+  If all piles contain exactly one stone, then first player wins with an odd number 
+  of stones and second wins with an even number. Otherwise, we calculate the nimSum, 
+  which is found by running XOR on all sizes of piles. If the nimSum is zero, 
+  second player wins. If not, first player wins.
 
 */
+
+function misereNim(s){
+    if (Math.max(...s) === 1) {
+    return s.length % 2 === 0 ? "First" : "Second";
+  }
+  
+  const xor = s.reduce((x, y) => x ^ y);
+  return xor === 0 ? "Second" : "First";
+}
+
+console.log(misereNim([9,8,4,4,4,7]))
