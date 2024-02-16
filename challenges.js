@@ -2911,6 +2911,14 @@ console.log(balancedSums([0,0,2,0]))
   to move wins, print First on a new line; otherwise print Second. Assume both players
   move optimally.
 
-  
+  EXAMPLE:
+  S = [1,1,1]
+  In this case, player 1 picks a pile, player 2 picks a pile and player 1 has to
+  choose the last pile. Player 2 wins so return "Second".
+  s = [1,2,2]
+  There is no permutation of optimal moves where player 2 wins. For example, player
+  1 chooses the first pile. If player 2 chooses 1 from another pile, player 1 will
+  choose the pile with 2 left. If player 2 chooses a pile of 2, player 1 chooses 1
+  from the remaining pile leaving the last stone for player 2. Return "First".
 
 */
