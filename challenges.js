@@ -3075,7 +3075,12 @@ function isBalanced (string) {
   1 5 9
   6 7 2
   This took three replacements at a cost of [5-8] + [8-9] + [4-7] = 7
-  
-  
+
+  FUNCTION DESCRIPTION:
+  formingMagicSquare has the following parameters:
+    * int s[3][3]: a3x3 array of integers
+
+  RETURNS:
+    * int: the minimal total cost of converting the input square to a magic square.
 
 */
