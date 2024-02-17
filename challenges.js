@@ -2982,4 +2982,26 @@ function gamingArray(arr) {
     return temp.length % 2 ? 'BOB' : 'ANDY'
 }
 
-console.log(gamingArray([2,3,5,4,1]))
+// console.log(gamingArray([2,3,5,4,1]))
+
+/* BALANCED BRACKETS
+  A bracket is considered to be one of the following characters: (,),{,},[,].
+  Two brackets are considered to be a matched pair if the an opening bracket
+  (,[ or { occurs to the left of a closing bracket ), }, ] of the exact same type.
+  There are three types of matched pairs of brackets: [], {}, and ().
+
+  A matching pair of brackets is not balanced if the set of brackets it encloses
+  are not matched. For example, {[(])} is not balanced because the contents in 
+  between { and } are not balanced. The pair of square brackets encloses a single,
+  unbalanced opening square bracket ].
+
+  By this logic, we say a sequence of brackets is balanced if the following 
+  conditions are met:
+    * it contains no unmatched brackets
+    * The subset of brackets enclosed within the confines of a matched pair of
+      brackets is also a matched pair of brackets.
+
+  Given n strings of brackets, determine whether each sequence of brackets is
+  balanced. If a string is balanced, return YES. Otherwise, return NO.
+
+*/
