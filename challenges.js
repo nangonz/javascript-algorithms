@@ -2984,7 +2984,7 @@ function gamingArray(arr) {
 
 // console.log(gamingArray([2,3,5,4,1]))
 
-/* BALANCED BRACKETS
+/* BALANCED BRACKETS -----------------------------------------------------------
   A bracket is considered to be one of the following characters: (,),{,},[,].
   Two brackets are considered to be a matched pair if the an opening bracket
   (,[ or { occurs to the left of a closing bracket ), }, ] of the exact same type.
@@ -3011,3 +3011,42 @@ function gamingArray(arr) {
     * string: either YES or NO.
 
 */
+
+function isBalanced (string) {
+  let stack = []
+  let check
+
+  for (let char of string) {
+    if(char == "[" || char == "{" || char == "(") {
+      stack.push(char)
+      continue
+    }
+    //if current char is not opening bracket, then it must be closing
+    //so stack cannot be empty at this point.
+    if(stack.length == 0) return "NO"
+
+    switch (char){
+      case ')':
+        check = stack.pop();
+        if (check == '{' || check == '[')
+          return false;
+        break;
+ 
+      case '}':
+        check = stack.pop();
+        if (check == '(' || check == '[')
+          return false;
+        break;
+ 
+      case ']':
+        check = stack.pop();
+        if (check == '(' || check == '{')
+          return false;
+        break;
+    }    
+  }
+  // Check Empty Stack
+  return stack.length == 0? "YES": "NO";
+}
+
+console.log(isBalanced("([{[n}}])"))
