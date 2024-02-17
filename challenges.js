@@ -3004,4 +3004,10 @@ function gamingArray(arr) {
   Given n strings of brackets, determine whether each sequence of brackets is
   balanced. If a string is balanced, return YES. Otherwise, return NO.
 
+  FUNCTION DESCRIPTION:
+  isBalanced has the following parameters:
+    * string s: string of brackets.
+  RETURNS:
+    * string: either YES or NO.
+
 */
