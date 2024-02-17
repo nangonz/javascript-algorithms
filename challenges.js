@@ -3064,4 +3064,18 @@ function isBalanced (string) {
   NOTE: The resulting magic square must contain distinct integers in the inclusive
   range [1,9]
 
+  EXAMPLE:
+  $s = [[5,3,4], [1,5,8], [6,4,2]]
+  The matrix looks like this:
+  5 3 4
+  1 5 8
+  6 4 2
+  We can convert it to the following magic square:
+  8 3 4
+  1 5 9
+  6 7 2
+  This took three replacements at a cost of [5-8] + [8-9] + [4-7] = 7
+  
+  
+
 */
