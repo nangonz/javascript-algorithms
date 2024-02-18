@@ -3067,9 +3067,12 @@ function isBalanced (string) {
   EXAMPLE:
   $s = [[5,3,4], [1,5,8], [6,4,2]]
   The matrix looks like this:
-  5 3 4
-  1 5 8
-  6 4 2
+  -  -  -  - 15
+  5  3  4  - 12
+  1  5  8  - 14
+  6  4  2  - 12
+  |  |  | 
+  12 12 14 - 12
   We can convert it to the following magic square:
   8 3 4
   1 5 9
@@ -3082,5 +3085,46 @@ function isBalanced (string) {
 
   RETURNS:
     * int: the minimal total cost of converting the input square to a magic square.
+           - 15
+  4  9  2  - 15
+  3  5  7  - 15
+  8  1  5  - 14
+  |  |  | 
+ 15 15 14  - 14
+*/  
+
+function formingMagicSquare(square) {
+    const patterns = [
+        [[8, 1, 6], [3, 5, 7], [4, 9, 2]],
+        [[6, 1, 8], [7, 5, 3], [2, 9, 4]],
+        [[4, 9, 2], [3, 5, 7], [8, 1, 6]],
+        [[2, 9, 4], [7, 5, 3], [6, 1, 8]],
+        [[8, 3, 4], [1, 5, 9], [6, 7, 2]],
+        [[4, 3, 8], [9, 5, 1], [2, 7, 6]],
+        [[6, 7, 2], [1, 5, 9], [8, 3, 4]],
+        [[2, 7, 6], [9, 5, 1], [4, 3, 8]]
+    ];
+
+    const getCost = (pattern, square) => {
+      return pattern
+        .reduce((cost, value, index) => cost + Math.abs(value - square[index]), 0);
+    } 
+    return patterns
+      .reduce((cost, pattern) => Math.min(cost, getCost(pattern.flat(), square.flat())), Infinity);
+}
+
+console.log(formingMagicSquare([[5, 3, 4], [1, 5, 8], [6, 4, 2]]))
+
+/* RECURSIVE DIGIT SUM
+  We define super digit of an integer x using the following rules:
+  Given an integer, we need to find the super digit of the integer.
+    * If x has only 1 digit, then its super digit is x.
+    * Otherwise, the super digit of x is equal to the super digit of
+      the sum of the digits of x.
+  For example, the super digit of 9875 will be calculated as:
+  super_digit(9875)    9+8+7+5 = 29
+  super_digit(29)      2+9 = 11
+  super_digit(11)      1+1 = 2
+  super_digit(2)       = 2
 
 */
