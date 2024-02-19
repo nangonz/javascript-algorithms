@@ -3107,15 +3107,20 @@ function formingMagicSquare(square) {
 
     const getCost = (pattern, square) => {
       return pattern
-        .reduce((cost, value, index) => cost + Math.abs(value - square[index]), 0);
+        .reduce((cost, value, index) => {
+          return cost + Math.abs(value - square[index])
+        }, 0);
     } 
     return patterns
-      .reduce((cost, pattern) => Math.min(cost, getCost(pattern.flat(), square.flat())), Infinity);
+      .reduce((cost, pattern) => {
+        return Math.min(cost, getCost(pattern.flat(), square.flat()))
+      }, Infinity);
 }
 
 console.log(formingMagicSquare([[5, 3, 4], [1, 5, 8], [6, 4, 2]]))
 
-/* RECURSIVE DIGIT SUM
+
+/* RECURSIVE DIGIT SUM ----------------------------------------------------
   We define super digit of an integer x using the following rules:
   Given an integer, we need to find the super digit of the integer.
     * If x has only 1 digit, then its super digit is x.
@@ -3151,6 +3156,4 @@ console.log(formingMagicSquare([[5, 3, 4], [1, 5, 8], [6, 4, 2]]))
   
   RETURNS:
     *  int: the super digit of n repeated k times.
-
-
 */
