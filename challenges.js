@@ -3182,5 +3182,14 @@ function superDigit(n, k) {
   reduces the number to 1 wins the game. Louise always starts.
   Given an initial value, determine who wins the game.
   
+  EXAMPLE:
+  n = 132
+  It's Louise's turn first. She determines that 132 is not a powe of 2.
+  The next lower power of 2 is 128, so she substract that from 132 and passes
+  4 to Richard. 4 is a power of 2, so Richard divides it by 2 and passes 2 to
+  Louise. Likewise, 2 is a power so she divides it by 2 and reaches 1. She
+  wins the game.
+  UPDATE: if they initially set counter to 1, Richards wins. Louise cannot 
+  make a move so she loses.
 
 */
