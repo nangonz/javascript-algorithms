@@ -3106,7 +3106,7 @@ function formingMagicSquare(square) {
         [[2, 7, 6], [9, 5, 1], [4, 3, 8]]
     ];
 
-    // this function counts the cost between square and each possible pattern for magic square
+    // this function counts the cost between square and a pattern
     const getCost = (pattern, square) => {
       return pattern
         .reduce((cost, value, index) => {
@@ -3173,4 +3173,14 @@ function superDigit(n, k) {
   return superDigit(String(p), 1)
 }
 
-console.log(superDigit("9875", 1))
+// console.log(superDigit("9875", 1))
+
+/* COUNTER GAME -------------------------------------------------------
+  Louise and Richard have develop a numbers game. They pick a number and
+  check to see if it is a power of 2. If it is, they divide it by 2. If not
+  they reduce it by the next lower nmber which is a power of 2. Whoever
+  reduces the number to 1 wins the game. Louise always starts.
+  Given an initial value, determine who wins the game.
+  
+
+*/
