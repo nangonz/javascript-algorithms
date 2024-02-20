@@ -3192,4 +3192,10 @@ function superDigit(n, k) {
   UPDATE: if they initially set counter to 1, Richards wins. Louise cannot 
   make a move so she loses.
 
+  FUNCTION DESCRIPTION:
+  counterGame has the following parameters:
+    * int n: the initial game counter value.
+
+  RETURNS:
+    * string: either Richard or Louise.
 */
