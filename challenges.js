@@ -3178,7 +3178,7 @@ function superDigit(n, k) {
 /* COUNTER GAME -------------------------------------------------------
   Louise and Richard have develop a numbers game. They pick a number and
   check to see if it is a power of 2. If it is, they divide it by 2. If not
-  they reduce it by the next lower nmber which is a power of 2. Whoever
+  they reduce it by the next lower number which is a power of 2. Whoever
   reduces the number to 1 wins the game. Louise always starts.
   Given an initial value, determine who wins the game.
   
@@ -3198,4 +3198,45 @@ function superDigit(n, k) {
 
   RETURNS:
     * string: either Richard or Louise.
+*/
+
+function counterGame(n) {
+  let curr_player = "Louise"
+  const changeTurn = () => {
+    return curr_player == "Louise" 
+      ? curr_player = "Richard" 
+      : curr_player = "Louise"
+  }
+
+  const findClosestPow = (number) => {
+    if (number <= 0) return 1
+    let closest = 1;
+    while (closest * 2 <= number) {
+        closest *= 2
+    }
+    return closest;
+  }
+
+  while (n > 1) {
+    let isPowerOfTwo = n != 0 && (n & (n - 1)) === 0
+    if(isPowerOfTwo) {
+      n = n / 2
+    } else {
+      n = n - findClosestPow(n)
+    }
+    if(n === 1) return curr_player
+    changeTurn()
+  }
+}
+
+console.log(counterGame(132))
+console.log(counterGame(6))
+
+/* SUM VS XOR
+  Given an integer n, find each x such that:
+    * 0 <= x <= n
+    * n + x = n ^ x
+  where ^ denotates the bitwise XOR operator. Return the number of x's
+  satisfying the criteria.
+
 */
