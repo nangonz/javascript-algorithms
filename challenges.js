@@ -3247,6 +3247,11 @@ console.log(counterGame(6))
     * 4 + 3 = 4 ^ 3 = 7
   Return 4
 
-  
+  FUNCTION DESCRIPTION:
+  sumXor has the following parameters:
+    * int n: an integer.
+
+  RETURNS:
+    * int: the number of values found
 
 */
