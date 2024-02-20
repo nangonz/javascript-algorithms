@@ -3094,6 +3094,7 @@ function isBalanced (string) {
 */  
 
 function formingMagicSquare(square) {
+    // all possible patterns for a 3x3 magic square.
     const patterns = [
         [[8, 1, 6], [3, 5, 7], [4, 9, 2]],
         [[6, 1, 8], [7, 5, 3], [2, 9, 4]],
@@ -3105,12 +3106,14 @@ function formingMagicSquare(square) {
         [[2, 7, 6], [9, 5, 1], [4, 3, 8]]
     ];
 
+    // this function counts the cost between square and each possible pattern for magic square
     const getCost = (pattern, square) => {
       return pattern
         .reduce((cost, value, index) => {
           return cost + Math.abs(value - square[index])
         }, 0);
     } 
+    // returns the minimum cost
     return patterns
       .reduce((cost, pattern) => {
         return Math.min(cost, getCost(pattern.flat(), square.flat()))
