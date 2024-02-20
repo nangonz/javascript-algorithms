@@ -3117,7 +3117,7 @@ function formingMagicSquare(square) {
       }, Infinity);
 }
 
-console.log(formingMagicSquare([[5, 3, 4], [1, 5, 8], [6, 4, 2]]))
+// console.log(formingMagicSquare([[5, 3, 4], [1, 5, 8], [6, 4, 2]]))
 
 
 /* RECURSIVE DIGIT SUM ----------------------------------------------------
@@ -3162,6 +3162,12 @@ console.log(formingMagicSquare([[5, 3, 4], [1, 5, 8], [6, 4, 2]]))
 */
 
 function superDigit(n, k) {
-    // Write your code here
-  return 
+  if (n.length === 1) return n
+  let p = n
+    .split("")
+    .reduce((acc, value)=>acc += Number(value), 0) * k
+  console.log(p)
+  return superDigit(String(p), 1)
 }
+
+console.log(superDigit("9875", 1))
