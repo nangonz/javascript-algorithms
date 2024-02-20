@@ -3239,4 +3239,14 @@ console.log(counterGame(6))
   where ^ denotates the bitwise XOR operator. Return the number of x's
   satisfying the criteria.
 
+  EXAMPLE:
+  There are four values that meet the criteria:
+    * 4 + 0 = 4 ^ 0 = 4
+    * 4 + 1 = 4 ^ 1 = 5
+    * 4 + 2 = 4 ^ 2 = 6
+    * 4 + 3 = 4 ^ 3 = 7
+  Return 4
+
+  
+
 */
