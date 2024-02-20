@@ -3201,13 +3201,10 @@ function superDigit(n, k) {
 */
 
 function counterGame(n) {
-  let curr_player = "Louise"
-  const changeTurn = () => {
-    return curr_player == "Louise" 
-      ? curr_player = "Richard" 
-      : curr_player = "Louise"
-  }
-
+  let turn = "Louise"
+  // change player's turn
+  const changeTurn = () => turn == "Louise" ? turn = "Richard" : turn = "Louise"
+  // function to find closest number that is power of two
   const findClosestPow = (number) => {
     if (number <= 0) return 1
     let closest = 1;
@@ -3218,21 +3215,22 @@ function counterGame(n) {
   }
 
   while (n > 1) {
+    // bit to bit comparison, bitwise operation (AND)
     let isPowerOfTwo = n != 0 && (n & (n - 1)) === 0
     if(isPowerOfTwo) {
       n = n / 2
     } else {
       n = n - findClosestPow(n)
     }
-    if(n === 1) return curr_player
+    if(n === 1) return turn
     changeTurn()
   }
 }
 
-console.log(counterGame(132))
-console.log(counterGame(6))
+// console.log(counterGame(132))
+// console.log(counterGame(6))
 
-/* SUM VS XOR
+/* SUM VS XOR -------------------------------------------------------
   Given an integer n, find each x such that:
     * 0 <= x <= n
     * n + x = n ^ x
@@ -3253,5 +3251,11 @@ console.log(counterGame(6))
 
   RETURNS:
     * int: the number of values found
+
+  SAMPLE INPUT: 5
+  SAMPLE OUTPUT: 2
+  EXPLANATION: For n = 5, the x values 0 and 2 satisfy the conditions:
+    * 5 + 0 = 5, 5 ^ 0 = 5
+    * 5 + 2 = 7, 5 ^ 2 = 7
 
 */
