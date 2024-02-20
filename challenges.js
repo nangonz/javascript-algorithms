@@ -3156,6 +3156,9 @@ console.log(formingMagicSquare([[5, 3, 4], [1, 5, 8], [6, 4, 2]]))
   
   RETURNS:
     *  int: the super digit of n repeated k times.
+
+  INPUT FORMAT:
+  The first line contains two separated integers, n and k
 */
 
 function superDigit(n, k) {
