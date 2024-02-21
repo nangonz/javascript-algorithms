@@ -3257,5 +3257,31 @@ function counterGame(n) {
   EXPLANATION: For n = 5, the x values 0 and 2 satisfy the conditions:
     * 5 + 0 = 5, 5 ^ 0 = 5
     * 5 + 2 = 7, 5 ^ 2 = 7
-
 */
+
+function sumXor(n) {
+  // Write your code here
+  let result = []
+  for(let i=0; i<=n ; i++) {
+    if ((n + i) === (n ^ i)) {
+      result.push(i)
+    }
+  }
+  return result.length
+}
+
+
+function sumXorAlt(n) {
+  // Count the number of zeros in the binary representation of n
+  let countZeros = 0;
+  while (n > 0) {
+    if (n % 2 === 0) {
+      countZeros++;
+    }
+    n = Math.floor(n / 2);
+  }
+  // Calculate the number of possible i's
+  return Math.pow(2, countZeros);
+}
+
+console.log(sumXorAlt(5))
