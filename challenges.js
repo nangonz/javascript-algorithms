@@ -3333,7 +3333,12 @@ function sumXorAlt(n) {
   . . .
   0 . 0
 
+  FUNCTION DESCRIPTION:
+  bomberMan has the folloring parameters:
+    * int n: the number of seconds to simulate.
+    * string grid[r]: an array of strings that represents the grid.
   
-
-
+  RETURNS:
+    * string[r]: n array of strings that represent the grid in its final state.
+  
 */
