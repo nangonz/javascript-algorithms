@@ -3340,5 +3340,17 @@ function sumXorAlt(n) {
   
   RETURNS:
     * string[r]: n array of strings that represent the grid in its final state.
-  
+
+  SAMPLE INPUT:
+  Function: r = 6, c = 7, n = 3
+  grid = [
+    '. . . . . . .',
+    '. . . 0 . . .',
+    '. . . . 0 . .',
+    '. . . . . . .',
+    '0 0 . . . . .',
+    '0 0 . . . . .'
+  ]
+
+  SAMPLE OUTPUT:
 */
