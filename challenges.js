@@ -3361,14 +3361,12 @@ function sumXorAlt(n) {
 */
 
 function bomberMan (n, grid) {
-  let initialState = [...grid]
-  let array
-
-  // first second: doing nothing
-  // second second: plants bombs in all empy cells
+  // Starts with the initial grid state with some bombs planted
+  // first second: does nothing.
+  // second second: plants bombs in all empy cells. No bombs detonates at this point.
   // third second: bombs planted 3 seconds ago detonate.
-  // repeat the process with current Initial state of grid.
-  
+  // repeats steps 3 and 4 indefinitely.
+    
   const isBombRange = (row_idx, idx) => {
     if(grid[row_idx + 1] && grid[row_idx + 1][idx] === "0" || 
     grid[row_idx - 1] && grid[row_idx - 1][idx] === "0" ||
@@ -3389,7 +3387,8 @@ function bomberMan (n, grid) {
     return newGridRowState.join("")
   }
 
-  return grid.map((grid_row, row_idx)=> mappedLine({ grid_row, row_idx }))
+  let newInitialState = grid.map((grid_row, row_idx)=> mappedLine({ grid_row, row_idx }))
+  return newInitialState
 }
 
 console.log(bomberMan(3, [
