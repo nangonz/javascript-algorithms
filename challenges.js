@@ -3370,10 +3370,11 @@ function bomberMan (n, grid) {
   // repeat the process with current Initial state of grid.
   
   const isBombRange = (row_idx, idx) => {
-    if(grid[row_idx + 1][idx] && grid[row_idx + 1][idx] === "0" || 
-    grid[row_idx - 1][idx] && grid[row_idx - 1][idx] === "0" ||
-    grid[row_idx][i+1] && grid[row_idx][i+1] === "0" ||
-    grid[row_idx][i-1] && grid[row_idx][i-1] === "0") {
+    if(grid[row_idx + 1] && grid[row_idx + 1][idx] === "0" || 
+    grid[row_idx - 1] && grid[row_idx - 1][idx] === "0" ||
+    grid[row_idx] && grid[row_idx][idx+1] === "0" ||
+    grid[row_idx] && grid[row_idx][idx-1] === "0" ||
+    grid[row_idx][idx] === "0") {
       return true
     } else {
       return false
@@ -3381,10 +3382,11 @@ function bomberMan (n, grid) {
   }
   
   const mappedLine = ({ grid_row, row_idx }) => {
-    grid_row.split("").map((el, idx)=>{
+    let newGridRowState = grid_row.split("").map((el, idx)=>{
       console.log(isBombRange(row_idx, idx))
-      return el === "." ? el="punto": el="cero"
+      return isBombRange(row_idx, idx) ? el=".": el="0"
     })
+    return newGridRowState.join("")
   }
 
   return grid.map((grid_row, row_idx)=> mappedLine({ grid_row, row_idx }))
@@ -3398,3 +3400,14 @@ console.log(bomberMan(3, [
     '00.....',
     '00.....'
   ]))
+
+
+/*
+000.000
+00...00
+000...0
+..00.00
+...0000
+...0000
+
+*/
