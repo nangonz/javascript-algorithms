@@ -3353,4 +3353,48 @@ function sumXorAlt(n) {
   ]
 
   SAMPLE OUTPUT:
+  0 0 0 . 0 0 0
+  0 0 . . . 0 0
+  0 0 0 . . . 0
+  . . . 0 0 0 0
+  . . . 0 0 0 0
 */
+
+function bomberMan (n, grid) {
+  let initialState = [...grid]
+  let array
+
+  // first second: doing nothing
+  // second second: plants bombs in all empy cells
+  // third second: bombs planted 3 seconds ago detonate.
+  // repeat the process with current Initial state of grid.
+  
+  const isBombRange = (row_idx, idx) => {
+    if(grid[row_idx + 1][idx] && grid[row_idx + 1][idx] === "0" || 
+    grid[row_idx - 1][idx] && grid[row_idx - 1][idx] === "0" ||
+    grid[row_idx][i+1] && grid[row_idx][i+1] === "0" ||
+    grid[row_idx][i-1] && grid[row_idx][i-1] === "0") {
+      return true
+    } else {
+      return false
+    }
+  }
+  
+  const mappedLine = ({ grid_row, row_idx }) => {
+    grid_row.split("").map((el, idx)=>{
+      console.log(isBombRange(row_idx, idx))
+      return el === "." ? el="punto": el="cero"
+    })
+  }
+
+  return grid.map((grid_row, row_idx)=> mappedLine({ grid_row, row_idx }))
+}
+
+console.log(bomberMan(3, [
+    '.......',
+    '...0...',
+    '....0..',
+    '.......',
+    '00.....',
+    '00.....'
+  ]))
