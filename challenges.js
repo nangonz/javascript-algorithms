@@ -3361,12 +3361,12 @@ function sumXorAlt(n) {
 */
 
 function bomberMan (n, grid) {
-  // Starts with the initial grid state with some bombs planted
-  // first second: does nothing.
-  // second second: plants bombs in all empy cells. No bombs detonates at this point.
-  // third second: bombs planted 3 seconds ago detonate.
+  // 1. Starts with the initial grid state with some bombs planted
+  // 2. first second: does nothing.
+  // 3. second second: plants bombs in all empy cells. No bombs detonates at this point.
+  // 4. third second: bombs planted 3 seconds ago detonate.
   // repeats steps 3 and 4 indefinitely.
-    
+
   const isBombRange = (row_idx, idx) => {
     if(grid[row_idx + 1] && grid[row_idx + 1][idx] === "0" || 
     grid[row_idx - 1] && grid[row_idx - 1][idx] === "0" ||
@@ -3398,10 +3398,60 @@ console.log(bomberMan(3, [
     '.......',
     '00.....',
     '00.....'
-  ]))
+]))
+
+
 
 
 /*
+Intial state
+.......
+...3...
+....3..
+.......
+33.....
+33.....
+
+1º paso bm does nothing
+.......
+...2...
+....2..
+.......
+22.....
+22.....
+
+2º plants bombs in all empty cells
+3333333
+3331333
+3333133
+3333333
+1133333
+1133333
+
+2º bombs planted 3 seconds ago detonate
+222.222
+22...22
+222...2
+..22.22
+...2222
+...2222
+
+repeats bombs planted in all empty cells
+1113111
+1133311
+1113331
+3311311
+3331111
+3331111
+
+repeats bombs planted in all empty cells
+.......
+...2...
+....3..
+.......
+33.....
+33.....
+
 000.000
 00...00
 000...0
