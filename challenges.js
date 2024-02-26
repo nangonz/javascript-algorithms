@@ -3363,16 +3363,9 @@ function sumXorAlt(n) {
 function bomberMan (n, grid) {
   // 1. Starts with the initial grid state with some bombs planted
   // 2. first second: does nothing.
-  // 3. second second: plants bombs in all empy cells. No bombs detonates at this point.
+  // 3. second second: plants bombs in all empty cells. No bombs detonates at this point.
   // 4. third second: bombs planted 3 seconds ago detonate.
   // repeats steps 3 and 4 indefinitely.
-  let possibleResults = ["initialState", "initialState", "allBombs", "firstDeto", "allBombs", "secondDeto"]
-  let result = 0
-  for (let i=n-1; i>=0; i--) {
-    result ++
-    if (result >= possibleResults.length) result = 1
-  }
-  console.log("result:", possibleResults[result])
 
   const isBombRange = (row_idx, idx) => {
     if(grid[row_idx + 1] && grid[row_idx + 1][idx] === "O" || 
@@ -3395,28 +3388,25 @@ function bomberMan (n, grid) {
 
   let firstDeto = grid.map((grid_row, row_idx)=> mappedLine({ grid_row, row_idx }))
 
-  switch ("fs") {
-    case "initialState":
-      return grid
-    case "allBombs":
-      return grid.map(gridLine => gridLine.split("").map((el)=> el = "O").join(""))
-    case "firstDeto": 
-      return firstDeto
-    case "secondDeto":
-      return firstDeto.map((grid_row, row_idx)=> mappedLine({ grid_row, row_idx }))
-  }
+  if (n < 2) return grid
+  if (n % 2 == 0) return grid.map(gridLine => gridLine.split("").map((el)=> el = "O").join(""))
+  if (n % 4 == 1) {
+    return bomberMan(3, firstDeto)
+  } else {
+    return firstDeto
+  } 
 }
 
-// console.log(bomberMan(3, [
-//     ".......",
-//     "...O...",
-//     "....O..",
-//     ".......",
-//     "OO.....",
-//     "OO....."
-// ]))
-
 console.log(bomberMan(3, [
+    ".......",
+    "...O...",
+    "....O..",
+    ".......",
+    "OO.....",
+    "OO....."
+]))
+
+console.log(bomberMan(5, [
   ".......",
   "...O.O.",
   "....O..",
