@@ -3390,11 +3390,10 @@ function bomberMan (n, grid) {
     let newGridRowState = grid_row.split("").map((el, idx)=>{
       return isBombRange(row_idx, idx) ? el=".": el="O"
     })
-    console.log(newGridRowState.join(""))
     return newGridRowState.join("")
   }
 
-  switch (possibleResults[result]) {
+  switch ("fs") {
     case "ie":
       return grid
     case "ab":
@@ -3404,15 +3403,16 @@ function bomberMan (n, grid) {
   }
 }
 
-console.log(bomberMan(3, [
-    ".......",
-    "...O...",
-    "....O..",
-    ".......",
-    "OO.....",
-    "OO....."
-]))
-console.log(bomberMan(3, [
+// console.log(bomberMan(3, [
+//     ".......",
+//     "...O...",
+//     "....O..",
+//     ".......",
+//     "OO.....",
+//     "OO....."
+// ]))
+
+console.log(bomberMan(5, [
   ".......",
   "...O.O.",
   "....O..",
@@ -3426,57 +3426,50 @@ console.log(bomberMan(3, [
 
 /*
 Intial state
-.......
-...3...
-....3..
-.......
-33.....
-33.....
+  ".......",
+  "...O.O.",
+  "....O..",
+  "..O....",
+  "OO...OO",
+  "OO.O..."
 
 1º paso does nothing
-.......
-...2...
-....2..
-.......
-22.....
-22.....
+  ".......",
+  "...O.O.",
+  "....O..",
+  "..O....",
+  "OO...OO",
+  "OO.O..."
 
 2º plants bombs in all empty cells
-3333333
-3331333
-3333133
-3333333
-1133333
-1133333
+  ".......",
+  "...O.O.",
+  "....O..",
+  "..O....",
+  "OO...OO",
+  "OO.O..."
 
 2º bombs planted 3 seconds ago detonate
-222.222
-22...22
-222...2
-..22.22
-...2222
-...2222
+  ".......",
+  "...O.O.",
+  "....O..",
+  "..O....",
+  "OO...OO",
+  "OO.O..."
 
 repeats bombs planted in all empty cells
-1113111
-1133311
-1113331
-3311311
-3331111
-3331111
+  ".......",
+  "...O.O.",
+  "....O..",
+  "..O....",
+  "OO...OO",
+  "OO.O..."
 
 repeats bombs planted in all empty cells
-.......
-...2...
-....3..
-.......
-33.....
-33.....
-
-000.000
-00...00
-000...0
-..00.00
-...0000
-...0000
+  ".......",
+  "...O.O.",
+  "....O..",
+  "..O....",
+  "OO...OO",
+  "OO.O..."
 */
