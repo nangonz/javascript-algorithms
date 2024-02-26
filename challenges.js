@@ -3363,16 +3363,9 @@ function sumXorAlt(n) {
 function bomberMan (n, grid) {
   // 1. Starts with the initial grid state with some bombs planted
   // 2. first second: does nothing.
-  // 3. second second: plants bombs in all empy cells. No bombs detonates at this point.
+  // 3. second second: plants bombs in all empty cells. No bombs detonates at this point.
   // 4. third second: bombs planted 3 seconds ago detonate.
   // repeats steps 3 and 4 indefinitely.
-  let possibleResults = ["ie", "ie", "ab", "fs", "ab"]
-  let result = 0
-  for (let i=n-1; i>=0; i--) {
-    result ++
-    if (result >= possibleResults.length) result = 1
-  }
-  console.log("result:", possibleResults[result])
 
   const isBombRange = (row_idx, idx) => {
     if(grid[row_idx + 1] && grid[row_idx + 1][idx] === "O" || 
@@ -3393,26 +3386,27 @@ function bomberMan (n, grid) {
     return newGridRowState.join("")
   }
 
-  switch ("fs") {
-    case "ie":
-      return grid
-    case "ab":
-      return grid.map(gridLine => gridLine.split("").map((el)=> el = "O").join(""))
-    case "fs": 
-      return grid.map((grid_row, row_idx)=> mappedLine({ grid_row, row_idx }))
-  }
+  let firstDeto = grid.map((grid_row, row_idx)=> mappedLine({ grid_row, row_idx }))
+
+  if (n < 2) return grid
+  if (n % 2 == 0) return grid.map(gridLine => gridLine.split("").map((el)=> el = "O").join(""))
+  if (n % 4 == 1) {
+    return bomberMan(3, firstDeto)
+  } else {
+    return firstDeto
+  } 
 }
 
-// console.log(bomberMan(3, [
-//     ".......",
-//     "...O...",
-//     "....O..",
-//     ".......",
-//     "OO.....",
-//     "OO....."
-// ]))
-
 console.log(bomberMan(3, [
+    ".......",
+    "...O...",
+    "....O..",
+    ".......",
+    "OO.....",
+    "OO....."
+]))
+
+console.log(bomberMan(5, [
   ".......",
   "...O.O.",
   "....O..",
@@ -3435,58 +3429,58 @@ Intial state
   "33.3..."                 "OO....."
 
 1º paso does nothing
-  ".......",
-  "...2.2.",
-  "....2..",
-  "..2....",
-  "22...22",
-  "22.2..."
+  ".......",                "......."
+  "...2.2.",                "...2..."
+  "....2..",                "....2.."
+  "..2....",                "......."
+  "22...22",                "22....."
+  "22.2..."                 "22....."
 
 2º plants bombs in all empty cells
-  "3333333",
-  "3331313",
-  "3333133",
-  "3313333",
-  "1133311",
-  "1131333"
+  "3333333",                "3 3 3 3 3 3 3"
+  "3331313",                "3 3 3 1 3 3 3"
+  "3333133",                "3 3 3 3 1 3 3"
+  "3313333",                "3 3 3 3 3 3 3"
+  "1133311",                "1 1 3 3 3 3 3"
+  "1131333"                 "1 1 3 3 3 3 3"
 
 3º bombs planted 3 seconds ago detonate
-  "222.2.2",
-  "22.....",
-  "22....2",
-  ".......",
-  ".......",
-  "......."
+  "222.2.2",                "2 2 2 . 2 2 2"
+  "22.....",                "2 2 . . . 2 2"
+  "22....2",                "2 2 2 . . . 2"
+  ".......",                ". . 2 2 . 2 2"
+  ".......",                ". . . 2 2 2 2"
+  "......."                 ". . . 2 2 2 2"
 
 4º repeats bombs planted in all empty cells
-  "1113131",
-  "1133333",
-  "1133331",
-  "3333333",
-  "3333333",
-  "3333333"
+  "1113131",                "1 1 1 3 1 1 1"
+  "1133333",                "1 1 3 3 3 1 1"
+  "1133331",                "1 1 1 3 3 3 1"
+  "3333333",                "3 3 1 1 3 1 1"
+  "3333333",                "3 3 3 1 1 1 1"
+  "3333333"                 "3 3 3 1 1 1 1"
 
 5º repeats bombs planted 3 second ago explode
-  ".......",
-  "...2.2.",
-  "...22..",
-  "..2222.",
-  "2222222",
-  "2222222"
+  ".......",                ". . . . . . ."
+  "...2.2.",                ". . . O . . ."
+  "...22..",                ". . . . O . ."
+  "..2222.",                ". . . . . . ."
+  "2222222",                "O O . . . . ."
+  "2222222"                 "O O . . . . ."
 
 4º repeats bombs planted in all empty cells
-  "OOOOOOO",
-  "OOO1O1O",
-  "OOO11OO",
-  "OO1111O",
-  "1111111",
-  "1111111"
+  "OOOOOOO",                ""
+  "OOO1O1O",                ""
+  "OOO11OO",                ""
+  "OO1111O",                ""
+  "1111111",                ""
+  "1111111"                 ""
 
 5º repeats bombs planted 3 second ago explode Nota: same as is
-  "OOO.O.O",
-  "OO.....",
-  "OO....O",
-  ".......",
-  ".......",
-  "......."
+  "OOO.O.O",                ""
+  "OO.....",                ""
+  "OO....O",                ""
+  ".......",                ""
+  ".......",                ""
+  "......."                 ""
 */
