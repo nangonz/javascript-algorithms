@@ -3366,14 +3366,13 @@ function bomberMan (n, grid) {
   // 3. second second: plants bombs in all empy cells. No bombs detonates at this point.
   // 4. third second: bombs planted 3 seconds ago detonate.
   // repeats steps 3 and 4 indefinitely.
-  let possibleResults = ["ie", "ie", "ab", "fs",]
+  let possibleResults = ["ie", "ie", "ab", "fs", "ab"]
   let result = 0
-  for (let i=1; i<=n; i++) {
-    if(n>possibleResults.length) {
-      result = 2
-    }
+  for (let i=n-1; i>=0; i--) {
     result ++
+    if (result >= possibleResults.length) result = 1
   }
+  console.log("result:", possibleResults[result])
 
   const isBombRange = (row_idx, idx) => {
     if(grid[row_idx + 1] && grid[row_idx + 1][idx] === "0" || 
@@ -3389,17 +3388,23 @@ function bomberMan (n, grid) {
   
   const mappedLine = ({ grid_row, row_idx }) => {
     let newGridRowState = grid_row.split("").map((el, idx)=>{
-      console.log(isBombRange(row_idx, idx))
       return isBombRange(row_idx, idx) ? el=".": el="0"
     })
+    console.log(newGridRowState.join(""))
     return newGridRowState.join("")
   }
 
-  let finalState = grid.map((grid_row, row_idx)=> mappedLine({ grid_row, row_idx }))
-  return finalState
+  switch (possibleResults[result]) {
+    case "ie":
+      return grid
+    case "ab":
+      return grid.map(gridLine => gridLine.split("").map((el)=> el = "0").join(""))
+    case "fs": 
+      return grid.map((grid_row, row_idx)=> mappedLine({ grid_row, row_idx }))
+  }
 }
 
-console.log(bomberMan(3, [
+console.log(bomberMan(4, [
     '.......',
     '...0...',
     '....0..',
@@ -3407,6 +3412,14 @@ console.log(bomberMan(3, [
     '00.....',
     '00.....'
 ]))
+// console.log(bomberMan(3, [
+//   ".......",
+//   "...O.O.",
+//   "....O..",
+//   "..O....",
+//   "OO...OO",
+//   "OO.O..."
+// ]))
 
 
 
@@ -3466,7 +3479,16 @@ repeats bombs planted in all empty cells
 ..00.00
 ...0000
 ...0000
-
-[ ei ab ef ab ei ab ef]
-n = 7
 */
+
+function countdown (n) {
+  let possibleResults = ["ie", "ie", "ab", "fs", "ab"]
+  let result = 0
+  for (let i=n-1; i>=0; i--) {
+    result ++
+    if (result >= possibleResults.length) result = 1
+  }
+  return possibleResults[result]
+}
+
+console.log(countdown(4))
