@@ -3375,11 +3375,11 @@ function bomberMan (n, grid) {
   console.log("result:", possibleResults[result])
 
   const isBombRange = (row_idx, idx) => {
-    if(grid[row_idx + 1] && grid[row_idx + 1][idx] === "0" || 
-    grid[row_idx - 1] && grid[row_idx - 1][idx] === "0" ||
-    grid[row_idx] && grid[row_idx][idx+1] === "0" ||
-    grid[row_idx] && grid[row_idx][idx-1] === "0" ||
-    grid[row_idx][idx] === "0") {
+    if(grid[row_idx + 1] && grid[row_idx + 1][idx] === "O" || 
+    grid[row_idx - 1] && grid[row_idx - 1][idx] === "O" ||
+    grid[row_idx] && grid[row_idx][idx+1] === "O" ||
+    grid[row_idx] && grid[row_idx][idx-1] === "O" ||
+    grid[row_idx][idx] === "O") {
       return true
     } else {
       return false
@@ -3388,7 +3388,7 @@ function bomberMan (n, grid) {
   
   const mappedLine = ({ grid_row, row_idx }) => {
     let newGridRowState = grid_row.split("").map((el, idx)=>{
-      return isBombRange(row_idx, idx) ? el=".": el="0"
+      return isBombRange(row_idx, idx) ? el=".": el="O"
     })
     console.log(newGridRowState.join(""))
     return newGridRowState.join("")
@@ -3398,28 +3398,28 @@ function bomberMan (n, grid) {
     case "ie":
       return grid
     case "ab":
-      return grid.map(gridLine => gridLine.split("").map((el)=> el = "0").join(""))
+      return grid.map(gridLine => gridLine.split("").map((el)=> el = "O").join(""))
     case "fs": 
       return grid.map((grid_row, row_idx)=> mappedLine({ grid_row, row_idx }))
   }
 }
 
-console.log(bomberMan(4, [
-    '.......',
-    '...0...',
-    '....0..',
-    '.......',
-    '00.....',
-    '00.....'
+console.log(bomberMan(3, [
+    ".......",
+    "...O...",
+    "....O..",
+    ".......",
+    "OO.....",
+    "OO....."
 ]))
-// console.log(bomberMan(3, [
-//   ".......",
-//   "...O.O.",
-//   "....O..",
-//   "..O....",
-//   "OO...OO",
-//   "OO.O..."
-// ]))
+console.log(bomberMan(3, [
+  ".......",
+  "...O.O.",
+  "....O..",
+  "..O....",
+  "OO...OO",
+  "OO.O..."
+]))
 
 
 
@@ -3480,15 +3480,3 @@ repeats bombs planted in all empty cells
 ...0000
 ...0000
 */
-
-function countdown (n) {
-  let possibleResults = ["ie", "ie", "ab", "fs", "ab"]
-  let result = 0
-  for (let i=n-1; i>=0; i--) {
-    result ++
-    if (result >= possibleResults.length) result = 1
-  }
-  return possibleResults[result]
-}
-
-console.log(countdown(4))
