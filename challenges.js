@@ -3366,6 +3366,14 @@ function bomberMan (n, grid) {
   // 3. second second: plants bombs in all empy cells. No bombs detonates at this point.
   // 4. third second: bombs planted 3 seconds ago detonate.
   // repeats steps 3 and 4 indefinitely.
+  let possibleResults = ["ie", "ie", "ab", "fs",]
+  let result = 0
+  for (let i=1; i<=n; i++) {
+    if(n>possibleResults.length) {
+      result = 2
+    }
+    result ++
+  }
 
   const isBombRange = (row_idx, idx) => {
     if(grid[row_idx + 1] && grid[row_idx + 1][idx] === "0" || 
@@ -3387,8 +3395,8 @@ function bomberMan (n, grid) {
     return newGridRowState.join("")
   }
 
-  let newInitialState = grid.map((grid_row, row_idx)=> mappedLine({ grid_row, row_idx }))
-  return newInitialState
+  let finalState = grid.map((grid_row, row_idx)=> mappedLine({ grid_row, row_idx }))
+  return finalState
 }
 
 console.log(bomberMan(3, [
@@ -3412,7 +3420,7 @@ Intial state
 33.....
 33.....
 
-1º paso bm does nothing
+1º paso does nothing
 .......
 ...2...
 ....2..
@@ -3459,4 +3467,6 @@ repeats bombs planted in all empty cells
 ...0000
 ...0000
 
+[ ei ab ef ab ei ab ef]
+n = 7
 */
