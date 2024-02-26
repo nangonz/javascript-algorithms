@@ -3412,7 +3412,7 @@ function bomberMan (n, grid) {
 //     "OO....."
 // ]))
 
-console.log(bomberMan(5, [
+console.log(bomberMan(3, [
   ".......",
   "...O.O.",
   "....O..",
@@ -3426,50 +3426,67 @@ console.log(bomberMan(5, [
 
 /*
 Intial state
-  ".......",
-  "...O.O.",
-  "....O..",
-  "..O....",
-  "OO...OO",
-  "OO.O..."
+  Test sample 2:            test sample 1:
+  ".......",                "......."
+  "...3.3.",                "...O..."
+  "....3..",                "....O.."
+  "..3....",                "......."
+  "33...33",                "OO....."
+  "33.3..."                 "OO....."
 
 1º paso does nothing
   ".......",
-  "...O.O.",
-  "....O..",
-  "..O....",
-  "OO...OO",
-  "OO.O..."
+  "...2.2.",
+  "....2..",
+  "..2....",
+  "22...22",
+  "22.2..."
 
 2º plants bombs in all empty cells
-  ".......",
-  "...O.O.",
-  "....O..",
-  "..O....",
-  "OO...OO",
-  "OO.O..."
+  "3333333",
+  "3331313",
+  "3333133",
+  "3313333",
+  "1133311",
+  "1131333"
 
-2º bombs planted 3 seconds ago detonate
+3º bombs planted 3 seconds ago detonate
+  "222.2.2",
+  "22.....",
+  "22....2",
   ".......",
-  "...O.O.",
-  "....O..",
-  "..O....",
-  "OO...OO",
-  "OO.O..."
+  ".......",
+  "......."
 
-repeats bombs planted in all empty cells
-  ".......",
-  "...O.O.",
-  "....O..",
-  "..O....",
-  "OO...OO",
-  "OO.O..."
+4º repeats bombs planted in all empty cells
+  "1113131",
+  "1133333",
+  "1133331",
+  "3333333",
+  "3333333",
+  "3333333"
 
-repeats bombs planted in all empty cells
+5º repeats bombs planted 3 second ago explode
   ".......",
-  "...O.O.",
-  "....O..",
-  "..O....",
-  "OO...OO",
-  "OO.O..."
+  "...2.2.",
+  "...22..",
+  "..2222.",
+  "2222222",
+  "2222222"
+
+4º repeats bombs planted in all empty cells
+  "OOOOOOO",
+  "OOO1O1O",
+  "OOO11OO",
+  "OO1111O",
+  "1111111",
+  "1111111"
+
+5º repeats bombs planted 3 second ago explode Nota: same as is
+  "OOO.O.O",
+  "OO.....",
+  "OO....O",
+  ".......",
+  ".......",
+  "......."
 */
