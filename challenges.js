@@ -3443,4 +3443,18 @@ console.log(bomberMan(5, [
     * No value is returned. Print the minimum number of bribes necessary or
       "Too chaotic" if someone has bribed more than 2 people.
 
+  SAMPLE INPUT:
+  t = 2
+  n = 5
+  q = [2, 1, 5, 3, 4]
+  n = 5
+  q = [2, 5, 1, 3, 4]
+
+  SAMPLE OUTPUT:
+  3
+  Too chaotic
 */
+
+function minimunBribe (q) {
+
+}
