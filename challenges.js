@@ -3426,4 +3426,13 @@ console.log(bomberMan(5, [
   order. Print the number of bribes, or, if anyone has bribed more than two
   people, print "Too chaotic".
 
+  EXAMPLE:
+  q = [1,2,3,5,4,6,7,8]
+  If person 5 bribes person 4, the queue will look like this: 1,2,3,5,4,6,7,8
+  Only one bribe is required, print 1.
+
+  q = [4,1,2,3]
+  Person 4 had to bribe 3 people to get to the current position. 
+  Print "Too chaotic"
+
 */
