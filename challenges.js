@@ -3416,13 +3416,13 @@ console.log(bomberMan(5, [
 ]))
 
 /* NEW YEAR CAOS
-  It is New Year's Day and peopke are in line for the Wonderland rollescoaster
+  It is New Year's Day and people are in line for the Wonderland rollescoaster
   ride. Each person wears a sticker indicating their initial position in the 
   queue from 1 to n. Any person can bribe the person directly in front of them
   to swap position, bur they still wear their original sticker. One person can
   bribe at most two others.
 
-  Determine the minimum number of bribes that took place to ger to a given queue
+  Determine the minimum number of bribes that took place to get to a given queue
   order. Print the number of bribes, or, if anyone has bribed more than two
   people, print "Too chaotic".
 
@@ -3434,5 +3434,13 @@ console.log(bomberMan(5, [
   q = [4,1,2,3]
   Person 4 had to bribe 3 people to get to the current position. 
   Print "Too chaotic"
+
+  FUNCTION DESCRIPTION:
+  Function minimumBribe has the following parameters:
+    * int q[n]: the positions of people after all bribes.
+
+  RETURNS:
+    * No value is returned. Print the minimum number of bribes necessary or
+      "Too chaotic" if someone has bribed more than 2 people.
 
 */
