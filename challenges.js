@@ -3370,8 +3370,8 @@ function bomberMan (n, grid) {
   const isBombRange = (row_idx, idx) => {
     if(grid[row_idx + 1] && grid[row_idx + 1][idx] === "O" || 
     grid[row_idx - 1] && grid[row_idx - 1][idx] === "O" ||
-    grid[row_idx] && grid[row_idx][idx+1] === "O" ||
-    grid[row_idx] && grid[row_idx][idx-1] === "O" ||
+    grid[row_idx][idx+1] === "O" ||
+    grid[row_idx][idx-1] === "O" ||
     grid[row_idx][idx] === "O") {
       return true
     } else {
@@ -3414,3 +3414,16 @@ console.log(bomberMan(5, [
   "OO...OO",
   "OO.O..."
 ]))
+
+/* NEW YEAR CAOS
+  It is New Year's Day and peopke are in line for the Wonderland rollescoaster
+  ride. Each person wears a sticker indicating their initial position in the 
+  queue from 1 to n. Any person can bribe the person directly in front of them
+  to swap position, bur they still wear their original sticker. One person can
+  bribe at most two others.
+
+  Determine the minimum number of bribes that took place to ger to a given queue
+  order. Print the number of bribes, or, if anyone has bribed more than two
+  people, print "Too chaotic".
+
+*/
