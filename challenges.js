@@ -3370,8 +3370,8 @@ function bomberMan (n, grid) {
   const isBombRange = (row_idx, idx) => {
     if(grid[row_idx + 1] && grid[row_idx + 1][idx] === "O" || 
     grid[row_idx - 1] && grid[row_idx - 1][idx] === "O" ||
-    grid[row_idx] && grid[row_idx][idx+1] === "O" ||
-    grid[row_idx] && grid[row_idx][idx-1] === "O" ||
+    grid[row_idx][idx+1] === "O" ||
+    grid[row_idx][idx-1] === "O" ||
     grid[row_idx][idx] === "O") {
       return true
     } else {
@@ -3398,12 +3398,12 @@ function bomberMan (n, grid) {
 }
 
 console.log(bomberMan(3, [
-    ".......",
-    "...O...",
-    "....O..",
-    ".......",
-    "OO.....",
-    "OO....."
+  ".......",
+  "...O...",
+  "....O..",
+  ".......",
+  "OO.....",
+  "OO....."
 ]))
 
 console.log(bomberMan(5, [
@@ -3415,72 +3415,83 @@ console.log(bomberMan(5, [
   "OO.O..."
 ]))
 
+/* NEW YEAR CAOS
+  It is New Year's Day and people are in line for the Wonderland rollescoaster
+  ride. Each person wears a sticker indicating their initial position in the 
+  queue from 1 to n. Any person can bribe the person directly in front of them
+  to swap position, bur they still wear their original sticker. One person can
+  bribe at most two others.
 
+  Determine the minimum number of bribes that took place to get to a given queue
+  order. Print the number of bribes, or, if anyone has bribed more than two
+  people, print "Too chaotic".
 
+  EXAMPLE:
+  q = [1,2,3,5,4,6,7,8]
+  If person 5 bribes person 4, the queue will look like this: 1,2,3,5,4,6,7,8
+  Only one bribe is required, print 1.
+
+  q = [4,1,2,3]
+  Person 4 had to bribe 3 people to get to the current position. 
+  Print "Too chaotic"
+
+  FUNCTION DESCRIPTION:
+  Function minimumBribe has the following parameters:
+    * int q[n]: the positions of people after all bribes.
+
+  RETURNS:
+    * No value is returned. Print the minimum number of bribes necessary or
+      "Too chaotic" if someone has bribed more than 2 people.
+
+  SAMPLE INPUT:
+  t = 2
+  n = 5
+  q = [2, 1, 5, 3, 4]
+  n = 5
+  q = [2, 5, 1, 3, 4]
+
+  SAMPLE OUTPUT:
+  3
+  Too chaotic
+*/
+
+function minimumBribes (q) {
+  let bribesQueue = [...q]
+  let minBribes = 0
+
+  while (!bribesQueue.every((val, ind)=> val === q.sort((a,b)=>a-b)[ind])) {
+    for (let idx=0; idx<bribesQueue.length; idx++) {
+      if (bribesQueue[idx] > bribesQueue[idx+1]) {
+        [bribesQueue[idx+1], bribesQueue[idx]] = [bribesQueue[idx], bribesQueue[idx+1]]
+        minBribes ++
+      }
+    }
+  }
+
+  console.log(minBribes)
+  return bribesQueue
+}
+
+// console.log(minimumBribes([2, 5, 1, 3, 4]))
+// console.log(minimumBribes([5, 1, 2, 3, 7, 8, 6, 4]))
+console.log(minimumBribes([1, 2, 5, 3, 7, 8, 6, 4]))
 
 /*
-Intial state
-  Test sample 2:            test sample 1:
-  ".......",                "......."
-  "...3.3.",                "...O..."
-  "....3..",                "....O.."
-  "..3....",                "......."
-  "33...33",                "OO....."
-  "33.3..."                 "OO....."
 
-1º paso does nothing
-  ".......",                "......."
-  "...2.2.",                "...2..."
-  "....2..",                "....2.."
-  "..2....",                "......."
-  "22...22",                "22....."
-  "22.2..."                 "22....."
+1 2 5 3 7 8 6 4
+12357648  3
+12356478  2
+12354678  1
+12345678  1
 
-2º plants bombs in all empty cells
-  "3333333",                "3 3 3 3 3 3 3"
-  "3331313",                "3 3 3 1 3 3 3"
-  "3333133",                "3 3 3 3 1 3 3"
-  "3313333",                "3 3 3 3 3 3 3"
-  "1133311",                "1 1 3 3 3 3 3"
-  "1131333"                 "1 1 3 3 3 3 3"
+   pa - pc = dif
+1  0  - 0    0
+2  1  - 1    0
+5  2  - 4   -2
+3  3  - 2    1
+7  4  - 6   -2
+8  5  - 7   -2
+6  6  - 5    1
+4  7  - 3    4
 
-3º bombs planted 3 seconds ago detonate
-  "222.2.2",                "2 2 2 . 2 2 2"
-  "22.....",                "2 2 . . . 2 2"
-  "22....2",                "2 2 2 . . . 2"
-  ".......",                ". . 2 2 . 2 2"
-  ".......",                ". . . 2 2 2 2"
-  "......."                 ". . . 2 2 2 2"
-
-4º repeats bombs planted in all empty cells
-  "1113131",                "1 1 1 3 1 1 1"
-  "1133333",                "1 1 3 3 3 1 1"
-  "1133331",                "1 1 1 3 3 3 1"
-  "3333333",                "3 3 1 1 3 1 1"
-  "3333333",                "3 3 3 1 1 1 1"
-  "3333333"                 "3 3 3 1 1 1 1"
-
-5º repeats bombs planted 3 second ago explode
-  ".......",                ". . . . . . ."
-  "...2.2.",                ". . . O . . ."
-  "...22..",                ". . . . O . ."
-  "..2222.",                ". . . . . . ."
-  "2222222",                "O O . . . . ."
-  "2222222"                 "O O . . . . ."
-
-4º repeats bombs planted in all empty cells
-  "OOOOOOO",                ""
-  "OOO1O1O",                ""
-  "OOO11OO",                ""
-  "OO1111O",                ""
-  "1111111",                ""
-  "1111111"                 ""
-
-5º repeats bombs planted 3 second ago explode Nota: same as is
-  "OOO.O.O",                ""
-  "OO.....",                ""
-  "OO....O",                ""
-  ".......",                ""
-  ".......",                ""
-  "......."                 ""
 */
