@@ -3456,21 +3456,20 @@ console.log(bomberMan(5, [
 */
 
 function minimumBribes (q, n) {
+  let minBribes = n || 0
   let correctQueue = [...q].sort((a,b)=> a-b)
   if(q.every((value, position)=> value === correctQueue[position])) return console.log(n)
-  let bribesQueue = [...q]
-  let minBribes = n || 0
 
   let isTooChaotic = q.find((el, idx)=> (idx - el + 1)<=-3)
 
-  for (let idx=0; idx<bribesQueue.length; idx++) {
-    if (bribesQueue[idx] > bribesQueue[idx+1]) {
-      [bribesQueue[idx+1], bribesQueue[idx]] = [bribesQueue[idx], bribesQueue[idx+1]]
+  for (let idx=0; idx<q.length; idx++) {
+    if (q[idx] > q[idx+1]) {
+      [q[idx+1], q[idx]] = [q[idx], q[idx+1]]
       minBribes ++
     }
   }
-
-  return isTooChaotic ? console.log("Too chaotic") : minimumBribes(bribesQueue, minBribes)
+  
+  return isTooChaotic ? console.log("Too chaotic") : minimumBribes(q, minBribes)
 }
 
 console.log(minimumBribes([2, 5, 1, 3, 4]))
