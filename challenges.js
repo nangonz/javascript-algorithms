@@ -3456,9 +3456,9 @@ console.log(bomberMan(5, [
 */
 
 function minimumBribes (q, n) {
+  let minBribes = n || 0
   let correctQueue = [...q].sort((a,b)=> a-b)
   if(q.every((value, position)=> value === correctQueue[position])) return console.log(n)
-  let minBribes = n || 0
 
   let isTooChaotic = q.find((el, idx)=> (idx - el + 1)<=-3)
 
@@ -3468,7 +3468,7 @@ function minimumBribes (q, n) {
       minBribes ++
     }
   }
-
+  
   return isTooChaotic ? console.log("Too chaotic") : minimumBribes(q, minBribes)
 }
 
