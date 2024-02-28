@@ -3459,6 +3459,8 @@ function minimumBribes (q) {
   let bribesQueue = [...q]
   let minBribes = 0
 
+  let isTooChaotic = q.find((el, idx)=> (idx - el + 1)<=-3)
+
   while (!bribesQueue.every((val, ind)=> val === q.sort((a,b)=>a-b)[ind])) {
     for (let idx=0; idx<bribesQueue.length; idx++) {
       if (bribesQueue[idx] > bribesQueue[idx+1]) {
@@ -3468,12 +3470,11 @@ function minimumBribes (q) {
     }
   }
 
-  console.log(minBribes)
-  return bribesQueue
+  return isTooChaotic ? console.log("Too chaotic") : console.log(minBribes)
 }
 
-// console.log(minimumBribes([2, 5, 1, 3, 4]))
-// console.log(minimumBribes([5, 1, 2, 3, 7, 8, 6, 4]))
+console.log(minimumBribes([2, 5, 1, 3, 4]))
+console.log(minimumBribes([5, 1, 2, 3, 7, 8, 6, 4]))
 console.log(minimumBribes([1, 2, 5, 3, 7, 8, 6, 4]))
 
 /*
