@@ -3396,7 +3396,7 @@ function bomberMan (n, grid) {
     return firstDeto
   } 
 }
-
+/* TEST CASES:
 console.log(bomberMan(3, [
   ".......",
   "...O...",
@@ -3414,7 +3414,7 @@ console.log(bomberMan(5, [
   "OO...OO",
   "OO.O..."
 ]))
-
+*/
 /* NEW YEAR CAOS
   It is New Year's Day and people are in line for the Wonderland rollescoaster
   ride. Each person wears a sticker indicating their initial position in the 
@@ -3455,22 +3455,22 @@ console.log(bomberMan(5, [
   Too chaotic
 */
 
-function minimumBribes (q) {
+function minimumBribes (q, n) {
+  let correctQueue = [...q].sort((a,b)=> a-b)
+  if(q.every((value, position)=> value === correctQueue[position])) return console.log(n)
   let bribesQueue = [...q]
-  let minBribes = 0
+  let minBribes = n || 0
 
   let isTooChaotic = q.find((el, idx)=> (idx - el + 1)<=-3)
 
-  while (!bribesQueue.every((val, ind)=> val === q.sort((a,b)=>a-b)[ind])) {
-    for (let idx=0; idx<bribesQueue.length; idx++) {
-      if (bribesQueue[idx] > bribesQueue[idx+1]) {
-        [bribesQueue[idx+1], bribesQueue[idx]] = [bribesQueue[idx], bribesQueue[idx+1]]
-        minBribes ++
-      }
+  for (let idx=0; idx<bribesQueue.length; idx++) {
+    if (bribesQueue[idx] > bribesQueue[idx+1]) {
+      [bribesQueue[idx+1], bribesQueue[idx]] = [bribesQueue[idx], bribesQueue[idx+1]]
+      minBribes ++
     }
   }
 
-  return isTooChaotic ? console.log("Too chaotic") : console.log(minBribes)
+  return isTooChaotic ? console.log("Too chaotic") : minimumBribes(bribesQueue, minBribes)
 }
 
 console.log(minimumBribes([2, 5, 1, 3, 4]))
