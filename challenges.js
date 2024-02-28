@@ -3476,23 +3476,3 @@ function minimumBribes (q, n) {
 console.log(minimumBribes([2, 5, 1, 3, 4]))
 console.log(minimumBribes([5, 1, 2, 3, 7, 8, 6, 4]))
 console.log(minimumBribes([1, 2, 5, 3, 7, 8, 6, 4]))
-
-/*
-
-1 2 5 3 7 8 6 4
-12357648  3
-12356478  2
-12354678  1
-12345678  1
-
-   pa - pc = dif
-1  0  - 0    0
-2  1  - 1    0
-5  2  - 4   -2
-3  3  - 2    1
-7  4  - 6   -2
-8  5  - 7   -2
-6  6  - 5    1
-4  7  - 3    4
-
-*/
