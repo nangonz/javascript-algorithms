@@ -3456,26 +3456,26 @@ console.log(bomberMan(5, [
 */
 
 function minimumBribes (q) {
-  let bribesQueue = []
+  let bribesQueue = [...q]
   let minBribes = 0
 
-  for (let idx=0; idx<q.length; idx++) {
-    if (q[idx] > q[idx+1]) {
-      bribesQueue.push(q[idx+1], q[idx])
-      minBribes ++
-    } 
+  while (!bribesQueue.every((val, ind)=> val === q.sort((a,b)=>a-b)[ind])) {
+    for (let idx=0; idx<bribesQueue.length; idx++) {
+      if (bribesQueue[idx] > bribesQueue[idx+1]) {
+        [bribesQueue[idx+1], bribesQueue[idx]] = [bribesQueue[idx], bribesQueue[idx+1]]
+        minBribes ++
+      }
+    }
   }
-  if (bribesQueue.find(el=> el < 0 && Math.abs(el) > 2)) {
-    console.log("Too chaotic") 
-  } else {
-    console.log(minBribes)
-  }
+
+  console.log(minBribes)
+  return bribesQueue
 }
 
-console.log(minimumBribes([2, 5, 1, 3, 4]))
-console.log(minimumBribes([5, 1, 2, 3, 7, 8, 6, 4]))
+// console.log(minimumBribes([2, 5, 1, 3, 4]))
+// console.log(minimumBribes([5, 1, 2, 3, 7, 8, 6, 4]))
 console.log(minimumBribes([1, 2, 5, 3, 7, 8, 6, 4]))
-  
+
 /*
 
 1 2 5 3 7 8 6 4
