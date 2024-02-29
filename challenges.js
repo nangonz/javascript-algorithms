@@ -3489,4 +3489,16 @@ function minimumBribes (q, n) {
   such that all cities are seved. The distribution range limits supply to cities
   where distance is less than k.
 
+  EXAMPLE:
+  K = 3
+  arr = [0,1,1,1,0,0,0]
+
+  Each city is 1 unit distance from its neighbors, and we will use 0 based 
+  indexing. We see there are 3 cities suitable for power plants, cities 1
+  2 and 3. If we build a power plant at arr[2], it can seve arr[0] through arr[4]
+  because those endpoints are at a distance of 2 and 2 < k. To serve arr[6]
+  we would need to be able to build a plant in city 4, 5 ,6. Since none of those
+  is suitable, we must return -1. It cannot be done using the current distribution
+  constraint.
+
 */
