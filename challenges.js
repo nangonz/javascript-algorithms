@@ -3501,4 +3501,19 @@ function minimumBribes (q, n) {
   is suitable, we must return -1. It cannot be done using the current distribution
   constraint.
 
+  FUNCTION DESCRIPTION:
+  pylons function has the following parameters:
+    * int k: the distribution range
+    * int arr[n]: the minimum number of plants required or -1
+  
+  SAMPLE INPUT:
+  n = 6, k = 2
+  arr = [0,1,1,1,1,0]
+  SAMPLE OUTPUT:
+  2
+  EXPLANATION:
+  Cities c[1], c[3], c[3], c[4] are suitable for power plants. Each plant
+  will have a range of k=2. If we build in cities 2 cities, c[1] and c[4]
+  then all cities will have electricity.
+
 */
