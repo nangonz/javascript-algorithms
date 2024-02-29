@@ -3472,6 +3472,33 @@ function minimumBribes (q, n) {
   return isTooChaotic ? console.log("Too chaotic") : minimumBribes(q, minBribes)
 }
 
-console.log(minimumBribes([2, 5, 1, 3, 4]))
-console.log(minimumBribes([5, 1, 2, 3, 7, 8, 6, 4]))
-console.log(minimumBribes([1, 2, 5, 3, 7, 8, 6, 4]))
+// console.log(minimumBribes([2, 5, 1, 3, 4]))
+// console.log(minimumBribes([5, 1, 2, 3, 7, 8, 6, 4]))
+// console.log(minimumBribes([1, 2, 5, 3, 7, 8, 6, 4]))
+
+/* GOOD LAND ELECTRICITY
+  Goodland is a country with a number of evenly spaced cities along a line.
+  The distance between adjacent cities is 1 unit. There es an energy 
+  infrastructure project planning meeting, and the goverment needs to know the
+  fewest numver of power plants needed to provide electricity to the entire list
+  of cities. Determine that number. If it cannot be done, return -1.
+
+  You are given a list of city data. Cities that may contain a power plant have
+  been labeled 1. Others not suitable for building a plant are labeled 0. Given
+  a distribution range of k, find the lowest number of plants that must be built
+  such that all cities are seved. The distribution range limits supply to cities
+  where distance is less than k.
+
+  EXAMPLE:
+  K = 3
+  arr = [0,1,1,1,0,0,0]
+
+  Each city is 1 unit distance from its neighbors, and we will use 0 based 
+  indexing. We see there are 3 cities suitable for power plants, cities 1
+  2 and 3. If we build a power plant at arr[2], it can seve arr[0] through arr[4]
+  because those endpoints are at a distance of 2 and 2 < k. To serve arr[6]
+  we would need to be able to build a plant in city 4, 5 ,6. Since none of those
+  is suitable, we must return -1. It cannot be done using the current distribution
+  constraint.
+
+*/
