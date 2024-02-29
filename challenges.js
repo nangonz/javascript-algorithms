@@ -3513,7 +3513,11 @@ function minimumBribes (q, n) {
   2
   EXPLANATION:
   Cities c[1], c[3], c[3], c[4] are suitable for power plants. Each plant
-  will have a range of k=2. If we build in cities 2 cities, c[1] and c[4]
+  will have a range of k=2. If we build in 2 cities, c[1] and c[4]
   then all cities will have electricity.
-
 */
+
+function pylons(k, arr) {
+    // Write your code here
+
+}
