@@ -3472,6 +3472,21 @@ function minimumBribes (q, n) {
   return isTooChaotic ? console.log("Too chaotic") : minimumBribes(q, minBribes)
 }
 
-console.log(minimumBribes([2, 5, 1, 3, 4]))
-console.log(minimumBribes([5, 1, 2, 3, 7, 8, 6, 4]))
-console.log(minimumBribes([1, 2, 5, 3, 7, 8, 6, 4]))
+// console.log(minimumBribes([2, 5, 1, 3, 4]))
+// console.log(minimumBribes([5, 1, 2, 3, 7, 8, 6, 4]))
+// console.log(minimumBribes([1, 2, 5, 3, 7, 8, 6, 4]))
+
+/* GOOD LAND ELECTRICITY
+  Goodland is a country with a number of evenly spaced cities along a line.
+  The distance between adjacent cities is 1 unit. There es an energy 
+  infrastructure project planning meeting, and the goverment needs to know the
+  fewest numver of power plants needed to provide electricity to the entire list
+  of cities. Determine that number. If it cannot be done, return -1.
+
+  You are given a list of city data. Cities that may contain a power plant have
+  been labeled 1. Others not suitable for building a plant are labeled 0. Given
+  a distribution range of k, find the lowest number of plants that must be built
+  such that all cities are seved. The distribution range limits supply to cities
+  where distance is less than k.
+
+*/
