@@ -3478,9 +3478,9 @@ function minimumBribes (q, n) {
 
 /* GOOD LAND ELECTRICITY
   Goodland is a country with a number of evenly spaced cities along a line.
-  The distance between adjacent cities is 1 unit. There es an energy 
+  The distance between adjacent cities is 1 unit. There is an energy 
   infrastructure project planning meeting, and the goverment needs to know the
-  fewest numver of power plants needed to provide electricity to the entire list
+  fewest number of power plants needed to provide electricity to the entire list
   of cities. Determine that number. If it cannot be done, return -1.
 
   You are given a list of city data. Cities that may contain a power plant have
@@ -3518,6 +3518,34 @@ function minimumBribes (q, n) {
 */
 
 function pylons(k, arr) {
-    // Write your code here
+  let i=0, count=0;
 
+  while(i<arr.length){
+    let j=i+k-1;
+    while(j>i-k){
+      if(arr[j]==1){
+        count++;
+        i=j+k;               
+        break;
+      }
+      j--;
+      if(j==i-k)
+      j--;
+    }
+    if(j<i-k)
+      return -1;
+  }
+  return count;
 }
+
+console.log(pylons(3, [0,1,1,1,1,0]))
+
+/*
+k=3
+arr=[0,1,1,1,0,0,0]
+
+0 1 1 1 1 0
+  p     p
+
+0 1 0 0 0 0 1 0
+*/
