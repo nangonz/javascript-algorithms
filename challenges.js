@@ -3538,14 +3538,12 @@ function pylons(k, arr) {
   return count;
 }
 
-console.log(pylons(3, [0,1,1,1,1,0]))
+console.log(pylons(3, [0,1,1,1,1,0])) 
 
 /*
 k=3
 arr=[0,1,1,1,0,0,0]
 
-0 1 1 1 1 0
-  p     p
+0 0 0 1 1 0 0
 
-0 1 0 0 0 0 1 0
 */
