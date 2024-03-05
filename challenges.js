@@ -3538,5 +3538,9 @@ function pylons(k, arr) {
   return count;
 }
 
-console.log(pylons(3, [0,1,1,1,1,0])) 
-console.log(pylons(3, [0,0,0,1,1,0]))
+// console.log(pylons(3, [0,1,1,1,1,0])) 
+// console.log(pylons(3, [0,0,0,1,1,0]))
+
+/*
+
+*/
