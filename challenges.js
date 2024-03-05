@@ -3555,4 +3555,11 @@ function pylons(k, arr) {
   This string is not valid as we can only remove 1 occurrence of c. Thar leaves
   character frequences of {a:1, b:1, c: 2}
 
+  FUNCTION DESCRIPTION:
+  isValid function has the following parameters:
+    * string: a stirng
+
+  RETURNS:
+    * string: either YES or NO
+
 */
