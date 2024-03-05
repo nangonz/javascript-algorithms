@@ -3561,5 +3561,24 @@ function pylons(k, arr) {
 
   RETURNS:
     * string: either YES or NO
-
 */
+
+function isValid (string) {
+  let frequency = {}
+  let string_characters = string.split("")
+
+  for (const char of string_characters) {
+    frequency.hasOwnProperty(char) 
+      ? frequency[char]++
+      : frequency[char] = 1
+  }
+
+  let most_rep_frequency = Object.values(frequency)
+
+  return most_rep_frequency
+}
+
+console.log(isValid("abcc"))
+console.log(isValid("aabbcd"))
+console.log(isValid("aabc"))
+console.log(isValid("abbcc"))
