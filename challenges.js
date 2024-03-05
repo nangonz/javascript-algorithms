@@ -3548,6 +3548,11 @@ function pylons(k, arr) {
   number of times. Given a string s determine if it is a valid string. Returs 
   YES or NO.
 
-  
+  EXAMPLE:
+  s = abc
+  This is a valid string because frequences are {a:1, b:1, c:1}
+  s = abccc
+  This string is not valid as we can only remove 1 occurrence of c. Thar leaves
+  character frequences of {a:1, b:1, c: 2}
 
 */
