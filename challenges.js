@@ -3561,5 +3561,25 @@ function pylons(k, arr) {
 
   RETURNS:
     * string: either YES or NO
-
 */
+
+function isValid (string) {
+  let frequency = {}
+  let string_characters = string.split("")
+
+  for (const char of string_characters) {
+    frequency.hasOwnProperty(char) 
+      ? frequency[char]++
+      : frequency[char] = 1
+  }
+
+  let repeated_values = Object.values(frequency)
+    .reduce(({same, removes}, value)=>{
+      return
+    }, {same:0 , removes:0})
+
+  return frequency
+}
+
+console.log(isValid("abcc"))
+console.log(isValid("aabbcd"))
