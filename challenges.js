@@ -3541,6 +3541,25 @@ function pylons(k, arr) {
 // console.log(pylons(3, [0,1,1,1,1,0])) 
 // console.log(pylons(3, [0,0,0,1,1,0]))
 
-/*
+/* SHERLOCK AND THE VALID STRING
+  Sherlock considers a string to be valid if all characters of the string appear
+  the same number of times. It is also valid if he can remove just 1 character
+  at 1 index in the string, and the remaining characters will occur the same
+  number of times. Given a string s determine if it is a valid string. Returs 
+  YES or NO.
+
+  EXAMPLE:
+  s = abc
+  This is a valid string because frequences are {a:1, b:1, c:1}
+  s = abccc
+  This string is not valid as we can only remove 1 occurrence of c. Thar leaves
+  character frequences of {a:1, b:1, c: 2}
+
+  FUNCTION DESCRIPTION:
+  isValid function has the following parameters:
+    * string: a stirng
+
+  RETURNS:
+    * string: either YES or NO
 
 */
