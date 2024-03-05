@@ -3573,13 +3573,12 @@ function isValid (string) {
       : frequency[char] = 1
   }
 
-  let repeated_values = Object.values(frequency)
-    .reduce(({same, removes}, value)=>{
-      return
-    }, {same:0 , removes:0})
+  let most_rep_frequency = Object.values(frequency)
 
-  return frequency
+  return most_rep_frequency
 }
 
 console.log(isValid("abcc"))
 console.log(isValid("aabbcd"))
+console.log(isValid("aabc"))
+console.log(isValid("abbcc"))
