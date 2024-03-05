@@ -3478,9 +3478,9 @@ function minimumBribes (q, n) {
 
 /* GOOD LAND ELECTRICITY
   Goodland is a country with a number of evenly spaced cities along a line.
-  The distance between adjacent cities is 1 unit. There es an energy 
+  The distance between adjacent cities is 1 unit. There is an energy 
   infrastructure project planning meeting, and the goverment needs to know the
-  fewest numver of power plants needed to provide electricity to the entire list
+  fewest number of power plants needed to provide electricity to the entire list
   of cities. Determine that number. If it cannot be done, return -1.
 
   You are given a list of city data. Cities that may contain a power plant have
@@ -3500,5 +3500,47 @@ function minimumBribes (q, n) {
   we would need to be able to build a plant in city 4, 5 ,6. Since none of those
   is suitable, we must return -1. It cannot be done using the current distribution
   constraint.
+
+  FUNCTION DESCRIPTION:
+  pylons function has the following parameters:
+    * int k: the distribution range
+    * int arr[n]: the minimum number of plants required or -1
+  
+  SAMPLE INPUT:
+  n = 6, k = 2
+  arr = [0,1,1,1,1,0]
+  SAMPLE OUTPUT:
+  2
+  EXPLANATION:
+  Cities c[1], c[3], c[3], c[4] are suitable for power plants. Each plant
+  will have a range of k=2. If we build in 2 cities, c[1] and c[4]
+  then all cities will have electricity.
+*/
+
+function pylons(k, arr) {
+  let i=0, count=0;
+
+  while(i<arr.length){
+    let j=i+k-1;
+    while(j>i-k){
+      if(arr[j]==1){
+        count++;
+        i=j+k;               
+        break;
+      }
+      j--;
+      if(j==i-k)
+      j--;
+    }
+    if(j<i-k)
+      return -1;
+  }
+  return count;
+}
+
+// console.log(pylons(3, [0,1,1,1,1,0])) 
+// console.log(pylons(3, [0,0,0,1,1,0]))
+
+/*
 
 */
