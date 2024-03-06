@@ -3573,7 +3573,7 @@ function isValid (string) {
       : frequency[char] = 1
   }
 
-  let most_rep_frequency = (frequency) => {
+  const most_rep_frequency = (frequency) => {
     let valuesArray = Object.values(frequency)
     let frequenciesObject = valuesArray.reduce((acc, value)=>{
       acc[value] = ( acc[value] || 0 ) + 1
@@ -3583,25 +3583,25 @@ function isValid (string) {
     let mostRepeatedAppearences = 0
     for(let value in frequenciesObject) {
       if (frequenciesObject[value] > mostRepeatedAppearences) {
-        mostRepeatedAppearences = value
+        mostRepeatedAppearences = Number(value)
       }
     }
-    const check = valuesArray.find(el => (el - mostRepeatedAppearences) > 1);
-    return check > 1 ? "NO": "YES"
+    const check = valuesArray.filter(el => el !== mostRepeatedAppearences);
+    console.log(check)
+    if (check.length > 1 || check[0] - mostRepeatedAppearences > 1) {
+      return "NO"
+    } else {
+      return "YES"
+    }
   }
   
   return most_rep_frequency(frequency)
 }
 
-// console.log(isValid("abcc"))
-// console.log(isValid("abbac"))
-// console.log(isValid("aaaaabc")) //NO
-console.log(isValid("aaaabbcc")) //NO
-// console.log(isValid("aabbcd"))
-// console.log(isValid("aabc"))
-// console.log(isValid("abbcc"))
-
-/*
-a:4, b:2, c:2
-[4,2,2] => []
-*/
+console.log(isValid("abcc"))
+console.log(isValid("abbac"))
+console.log(isValid("aaaaabc")) //NO
+console.log(isValid("abcdefghhgfedecba")) //NO
+console.log(isValid("aabbcd"))
+console.log(isValid("aabc"))
+console.log(isValid("abbcc"))
