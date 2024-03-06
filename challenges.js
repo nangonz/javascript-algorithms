@@ -3573,12 +3573,22 @@ function isValid (string) {
       : frequency[char] = 1
   }
 
-  let most_rep_frequency = Object.values(frequency).reduce((acc, value)=>{
-    acc[value] = ( acc[value] || 0 ) + 1
-    return acc
-  }, {})
+  let most_rep_frequency = (frequency) => {
+    let frequenciesObject = Object.values(frequency).reduce((acc, value)=>{
+      acc[value] = ( acc[value] || 0 ) + 1
+      return acc
+    }, {})
 
-  return most_rep_frequency
+    let mostRepeatedAppearences = 0
+    for(let value in frequenciesObject) {
+      if (frequenciesObject[value] > mostRepeatedAppearences) {
+        mostRepeatedAppearences = value
+      }
+    }
+    return Number(mostRepeatedAppearences)
+  }
+  
+  return most_rep_frequency(frequency)
 }
 
 console.log(isValid("abcc"))
