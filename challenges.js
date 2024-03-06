@@ -3574,7 +3574,8 @@ function isValid (string) {
   }
 
   let most_rep_frequency = (frequency) => {
-    let frequenciesObject = Object.values(frequency).reduce((acc, value)=>{
+    let valuesArray = Object.values(frequency)
+    let frequenciesObject = valuesArray.reduce((acc, value)=>{
       acc[value] = ( acc[value] || 0 ) + 1
       return acc
     }, {})
@@ -3585,13 +3586,15 @@ function isValid (string) {
         mostRepeatedAppearences = value
       }
     }
-    return Number(mostRepeatedAppearences)
+    const check = valuesArray.filter(el => el != valuesArray[mostRepeatedAppearences]).length;
+    return check > 1 ? "NO": "YES"
   }
   
   return most_rep_frequency(frequency)
 }
 
-console.log(isValid("abcc"))
+// console.log(isValid("abcc"))
+console.log(isValid("abbac"))
 // console.log(isValid("aabbcd"))
 // console.log(isValid("aabc"))
 // console.log(isValid("abbcc"))
