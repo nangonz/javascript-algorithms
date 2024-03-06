@@ -3573,12 +3573,16 @@ function isValid (string) {
       : frequency[char] = 1
   }
 
-  let most_rep_frequency = Object.values(frequency)
+  let most_rep_frequency = Object.values(frequency).reduce((acc, value)=>{
+    return acc.hasOwnProperty[value]
+      ? acc[value] ++
+      : acc[value] = 1
+  }, {most_repeated: null})
 
   return most_rep_frequency
 }
 
 console.log(isValid("abcc"))
-console.log(isValid("aabbcd"))
-console.log(isValid("aabc"))
-console.log(isValid("abbcc"))
+// console.log(isValid("aabbcd"))
+// console.log(isValid("aabc"))
+// console.log(isValid("abbcc"))
