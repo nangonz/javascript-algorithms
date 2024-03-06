@@ -3586,7 +3586,7 @@ function isValid (string) {
         mostRepeatedAppearences = value
       }
     }
-    const check = valuesArray.filter(el => el != valuesArray[mostRepeatedAppearences]).length;
+    const check = valuesArray.find(el => (el - mostRepeatedAppearences) > 1);
     return check > 1 ? "NO": "YES"
   }
   
@@ -3594,7 +3594,14 @@ function isValid (string) {
 }
 
 // console.log(isValid("abcc"))
-console.log(isValid("abbac"))
+// console.log(isValid("abbac"))
+// console.log(isValid("aaaaabc")) //NO
+console.log(isValid("aaaabbcc")) //NO
 // console.log(isValid("aabbcd"))
 // console.log(isValid("aabc"))
 // console.log(isValid("abbcc"))
+
+/*
+a:4, b:2, c:2
+[4,2,2] => []
+*/
