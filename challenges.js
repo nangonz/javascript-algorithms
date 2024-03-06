@@ -3574,10 +3574,9 @@ function isValid (string) {
   }
 
   let most_rep_frequency = Object.values(frequency).reduce((acc, value)=>{
-    return acc.hasOwnProperty[value]
-      ? acc[value] ++
-      : acc[value] = 1
-  }, {most_repeated: null})
+    acc[value] = ( acc[value] || 0 ) + 1
+    return acc
+  }, {})
 
   return most_rep_frequency
 }
