@@ -3564,38 +3564,38 @@ function pylons(k, arr) {
 */
 
 function isValid (string) {
-  let frequency = {}
-  let string_characters = string.split("")
+  let frequencyOfAppearance = {}
+  let stringCharacters = string.split("")
 
-  for (const char of string_characters) {
-    frequency.hasOwnProperty(char) 
-      ? frequency[char]++
-      : frequency[char] = 1
+  for (const character of stringCharacters) {
+    frequencyOfAppearance.hasOwnProperty(character) 
+      ? frequencyOfAppearance[character]++
+      : frequencyOfAppearance[character] = 1
   }
 
-  const most_rep_frequency = (frequency) => {
-    let valuesArray = Object.values(frequency)
+  const mostRepeatedFrequency = (frequencies) => {
+    let valuesArray = Object.values(frequencies)
     let frequenciesObject = valuesArray.reduce((acc, value)=>{
       acc[value] = ( acc[value] || 0 ) + 1
       return acc
     }, {})
 
-    let mostRepeatedAppearences = 0
+    let mostRepeatedAppearance = 0
     for(let value in frequenciesObject) {
-      if (frequenciesObject[value] > mostRepeatedAppearences) {
-        mostRepeatedAppearences = Number(value)
+      if (frequenciesObject[value] > mostRepeatedAppearance) {
+        mostRepeatedAppearance = Number(value)
       }
     }
-    const check = valuesArray.filter(el => el !== mostRepeatedAppearences);
-    console.log(check)
-    if (check.length > 1 || check[0] - mostRepeatedAppearences > 1) {
+    
+    const check = valuesArray.filter(el => el !== mostRepeatedAppearance);
+    if (check.length > 1 || check[0] - mostRepeatedAppearance > 1) {
       return "NO"
     } else {
       return "YES"
     }
   }
   
-  return most_rep_frequency(frequency)
+  return mostRepeatedFrequency(frequencyOfAppearance)
 }
 
 console.log(isValid("abcc"))
