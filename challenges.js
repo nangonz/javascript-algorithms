@@ -3635,18 +3635,12 @@ function climbingLeaderboard (ranked, player) {
   let ranking = [...ranked]
 
   for (let playerScore of player) {
-    let currentPosition = ranking.indexOf(playerScore) + 1
-    if(currentPosition <= 0) {
       ranking.push(playerScore)
       ranking.sort((a,b)=>b-a)
-      let position = ranking.indexOf(playerScore)
+      let setRanking = new Set(ranking)
+      let position = [...setRanking].indexOf(playerScore)
       climbingPositions.push(position + 1)
-      
-    } else {
-      climbingPositions.push(currentPosition)
-    }
   }
-
   return climbingPositions
 }
 
