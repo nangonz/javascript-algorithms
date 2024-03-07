@@ -3631,13 +3631,23 @@ function isValid (string) {
 */
 
 function climbingLeaderboard (ranked, player) {
-  let completeRanking = new Set([...ranked].sort((a,b)=> b-a))
+  let climbingPositions = []
+  let ranking = [...ranked]
 
   for (let playerScore of player) {
-    completeRanking.add(playerScore)
+    let currentPosition = ranking.indexOf(playerScore) + 1
+    if(currentPosition <= 0) {
+      ranking.push(playerScore)
+      ranking.sort((a,b)=>b-a)
+      let position = ranking.indexOf(playerScore)
+      climbingPositions.push(position + 1)
+      
+    } else {
+      climbingPositions.push(currentPosition)
+    }
   }
 
-  return Object.keys(completeRanking)
+  return climbingPositions
 }
 
 console.log(climbingLeaderboard([100, 90, 90, 80], [70, 80, 105]))
