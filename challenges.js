@@ -3627,6 +3627,8 @@ console.log(isValid("abbcc"))
   
   RETURNS:
     * int[m]: the player's rank after each new score
-
-
 */
+
+function climbingLeaderboard (ranked, player) {
+  return undefined
+}
