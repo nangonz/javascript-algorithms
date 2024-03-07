@@ -3598,17 +3598,18 @@ function isValid (string) {
   return mostRepeatedFrequency(frequencyOfAppearance)
 }
 
-console.log(isValid("abcc"))
-console.log(isValid("abbac"))
-console.log(isValid("aaaaabc")) //NO
-console.log(isValid("abcdefghhgfedecba")) //NO
-console.log(isValid("aabbcd"))
-console.log(isValid("aabc"))
-console.log(isValid("abbcc"))
+// console.log(isValid("abcc"))
+// console.log(isValid("abbac"))
+// console.log(isValid("aaaaabc")) //NO
+// console.log(isValid("abcdefghhgfedecba")) //NO
+// console.log(isValid("aabbcd"))
+// console.log(isValid("aabc"))
+// console.log(isValid("abbcc"))
 
 /* CLIMBING THE LEADERBOARD
   An arcade game player wants to climb to the top of the leaderboard and track 
-  their ranking. The game uses Dense Ranking, so its leaderboard works like this:
+  their ranking. The game uses "Dense Ranking", so its leaderboard works like 
+  this:
     * The player with the highest score is ranked number 1 on the leaderboard.
     * Players who have equal scores receive the same ranking number, and the 
       next player(s) receive the immediately following ranking number.
@@ -3630,5 +3631,16 @@ console.log(isValid("abbcc"))
 */
 
 function climbingLeaderboard (ranked, player) {
-  return undefined
+  let climbingPositions = []
+  let ranking = [...ranked]
+  let setRanking = new Set(ranked)
+
+  player.forEach(playerScore => {
+    setRanking.add(playerScore)
+    let position = [...setRanking].sort((a,b)=>b-a).indexOf(playerScore) + 1
+    climbingPositions.push(position)
+  })
+  return climbingPositions
 }
+
+console.log(climbingLeaderboard([100, 90, 90, 80], [70, 80, 105]))
