@@ -3666,6 +3666,18 @@ function climbingLeaderboardAlt(ranked, player) {
   Given the pointer to the head node of a linked list, change the next pointers
   of the nodes so that their order is reversed. The head pointer given may be
   null meaning that the initial list is empty.
+
+  EXAMPLE:
+  "head" references the list 1 -> 2 -> 3 -> NULL
+  Manipulate the next pointers of each node in place and return head, now
+  referencing the head of the list 3 -> 2 -> 1 -> NULL
+
+  FUNCTION DESCRIPTION:
+  Complete the reverse function which has the following parameters:
+    * SinglyLinkedListNode pointer head: a reference to the head of a list
+
+  RETURNS:
+    * SinglyLinkedListNode pointer: a reference to the head of the reversed list
   
 
 */
