@@ -3632,7 +3632,6 @@ function isValid (string) {
 
 function climbingLeaderboard (ranked, player) {
   let climbingPositions = []
-  let ranking = [...ranked]
   let setRanking = new Set(ranked)
 
   player.forEach(playerScore => {
@@ -3643,4 +3642,30 @@ function climbingLeaderboard (ranked, player) {
   return climbingPositions
 }
 
-console.log(climbingLeaderboard([100, 90, 90, 80], [70, 80, 105]))
+console.log(climbingLeaderboard([100,90,90,80], [70,80,105]))
+console.log(climbingLeaderboard([100,100,50,40,40,20,10], [5,25,50,120]))
+
+function climbingLeaderboardAlt(ranked, player) {
+  const uniqueRanked = Array.from(new Set(ranked));
+  const result = [];
+  let i = uniqueRanked.length - 1;
+
+  player.forEach((score) => {
+    while (i >= 0 && score >= uniqueRanked[i]) {
+        i--;
+    }
+    // Add 1 because ranks are 1-based, and array indices are 0-based.
+    // and 1 for the next rank
+    result.push((i + 1) + 1); 
+  });
+
+  return result;
+}
+
+/* REVERSE A LINKED LIST
+  Given the pointer to the head node of a linked list, change the next pointers
+  of the nodes so that their order is reversed. The head pointer given may be
+  null meaning that the initial list is empty.
+  
+
+*/
