@@ -3704,10 +3704,11 @@ console.log(reverseAlt({
   }
 }))
 
-/*
-
-prev:
-curr.next {2,3,4,null}
-curr.next = 
+/* REVERSE A DOUBLE LINKED LIST
+  Given the pointer to the head node of a doubly linked list, reverse the order
+  of the nodes in place. That es, change the next and prev pointers of the nodes
+  so that the direction of the list is reversed. Return a reference to the head
+  node of the reversed list.
+  NOTE: the head node might be NULL to indicate that the list es empty.
 
 */
