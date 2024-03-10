@@ -3680,45 +3680,34 @@ function climbingLeaderboardAlt(ranked, player) {
     * SinglyLinkedListNode pointer: a reference to the head of the reversed list
 */
 
-function reverse (linkedList) {
-  let prev = null
-  let current = linkedList.head
-  let next = null
-
-  while (current != null) {
-    next = current.next
-    current.next = prev
-    prev = current
-    current = next
-  }
-  linkedList = prev
-  return linkedList
-}
-
-function reverse(llist) {
-  // Write your code here   
-  let prev=null;
-  while(llist){
-    let next=llist.next;
-    llist.next = prev;
-    prev=llist;
-    llist=next;
+function reverseAlt(llist) {
+  // Write your code here
+  let current = llist   
+  let prev = null;
+  while(current){
+    let next = current.next;
+    current.next = prev;
+    prev = current;
+    current = next;
  } 
   return prev;   
 }
 
-console.log(reverse({
-  head: {
-    value: 1,
+console.log(reverseAlt({
+  data: 1,
+  next: {
+    data: 2,
     next: {
-      value: 2,
-      next: {
-        value: 3,
-        next: {
-          value: 4,
-          next: null
-        }
-      }
+      data: 3, 
+      next: null
     }
   }
 }))
+
+/*
+
+prev:
+curr.next {2,3,4,null}
+curr.next = 
+
+*/
