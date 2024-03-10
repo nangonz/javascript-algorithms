@@ -3642,8 +3642,8 @@ function climbingLeaderboard (ranked, player) {
   return climbingPositions
 }
 
-console.log(climbingLeaderboard([100,90,90,80], [70,80,105]))
-console.log(climbingLeaderboard([100,100,50,40,40,20,10], [5,25,50,120]))
+// console.log(climbingLeaderboard([100,90,90,80], [70,80,105]))
+// console.log(climbingLeaderboard([100,100,50,40,40,20,10], [5,25,50,120]))
 
 function climbingLeaderboardAlt(ranked, player) {
   const uniqueRanked = Array.from(new Set(ranked));
@@ -3680,33 +3680,35 @@ function climbingLeaderboardAlt(ranked, player) {
     * SinglyLinkedListNode pointer: a reference to the head of the reversed list
 */
 
-function reverse (linkedList) {
-  let prev = null
-  let current = linkedList.head
-  let next = null
-
-  while (current != null) {
-    next = current.next
-    current.next = prev
-    prev = current
-    current = next
-  }
-  linkedList = prev
-  return linkedList
+function reverseAlt(llist) {
+  // Write your code here
+  let current = llist   
+  let prev = null;
+  while(current){
+    let next = current.next;
+    current.next = prev;
+    prev = current;
+    current = next;
+ } 
+  return prev;   
 }
 
-console.log(reverse({
-  head: {
-    value: 1,
+console.log(reverseAlt({
+  data: 1,
+  next: {
+    data: 2,
     next: {
-      value: 2,
-      next: {
-        value: 3,
-        next: {
-          value: 4,
-          next: null
-        }
-      }
+      data: 3, 
+      next: null
     }
   }
 }))
+
+/* REVERSE A DOUBLE LINKED LIST
+  Given the pointer to the head node of a doubly linked list, reverse the order
+  of the nodes in place. That es, change the next and prev pointers of the nodes
+  so that the direction of the list is reversed. Return a reference to the head
+  node of the reversed list.
+  NOTE: the head node might be NULL to indicate that the list es empty.
+
+*/
