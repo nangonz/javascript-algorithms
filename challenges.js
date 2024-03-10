@@ -3642,8 +3642,8 @@ function climbingLeaderboard (ranked, player) {
   return climbingPositions
 }
 
-console.log(climbingLeaderboard([100,90,90,80], [70,80,105]))
-console.log(climbingLeaderboard([100,100,50,40,40,20,10], [5,25,50,120]))
+// console.log(climbingLeaderboard([100,90,90,80], [70,80,105]))
+// console.log(climbingLeaderboard([100,100,50,40,40,20,10], [5,25,50,120]))
 
 function climbingLeaderboardAlt(ranked, player) {
   const uniqueRanked = Array.from(new Set(ranked));
@@ -3693,6 +3693,18 @@ function reverse (linkedList) {
   }
   linkedList = prev
   return linkedList
+}
+
+function reverse(llist) {
+  // Write your code here   
+  let prev=null;
+  while(llist){
+    let next=llist.next;
+    llist.next = prev;
+    prev=llist;
+    llist=next;
+ } 
+  return prev;   
 }
 
 console.log(reverse({
