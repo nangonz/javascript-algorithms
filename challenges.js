@@ -3849,3 +3849,12 @@ function dividir(arr) {
 
   return [mitad1, mitad2];
 }
+
+function mergeSort(array) {
+  if (arr.length === 1) return array;
+  let arrayDividido = dividir(array);
+  let mitad1 = arrayDividido[0];
+  let mitad2 = arrayDividido[1];
+
+  return juntar(mergeSort(mitad1), mergeSort(mitad2));
+}
