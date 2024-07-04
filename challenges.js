@@ -3842,3 +3842,10 @@ function juntar(arr1, arr2) {
   return aux.concat(arr1.slice(i)).concat(arr2.slice(j));
 }
 
+function dividir(arr) {
+  var midIndex = Math.floor(arr.length / 2);
+  let mitad1 = arr.slice(0, midIndex);
+  let mitad2 = arr.slice(midIndex);
+
+  return [mitad1, mitad2];
+}
