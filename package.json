@@ -1,5 +1,6 @@
 {
   "name": "javascript-algorithm-practice",
+  "type": "module",
   "version": "0.0.0",
   "description": "hacker-rank challenges",
   "main": "adventJs.js",
