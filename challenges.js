@@ -1141,7 +1141,7 @@ whiteSheetOfPaper()
 picture frame  
 */
 
-function processData(input) {
+function processData1(input) {
   //Enter your code here
   const [operation, dataType, words] = input.split(";");
   let result = "";
@@ -1190,7 +1190,7 @@ function processData(input) {
 // processData("C;C;code swarm")
 // processData("S;C;OrangeHighlighter")
 
-function processData(input) {
+function processData2(input) {
   let words = input.split("\r\n");
   for (let i = 0; i < words.length; i++) {
     let split = words[i].substring(0, 1) === "S";
@@ -3858,3 +3858,41 @@ function mergeSort(array) {
 
   return juntar(mergeSort(mitad1), mergeSort(mitad2));
 }
+
+function bubbleSort(arr) {
+  let saveValue = 0;
+  let cambio = true;
+
+  while (cambio) {
+    cambio = false;
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] > arr[i + 1]) {
+        saveValue = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = saveValue;
+        cambio = true;
+      }
+    }
+  }
+  return arr;
+}
+
+// console.log(bubbleSort([1, 5, 4, 2, 8]));
+
+function insertionSort(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let auxiliar = arr[i];
+    let j = i - 1;
+
+    while (j >= 0 && arr[j] > auxiliar) {
+      arr[j + 1] = arr[j];
+      j--;
+    }
+    arr[j + 1] = auxiliar;
+  }
+  return arr;
+}
+
+console.log(insertionSort([1, 5, 2, 4, 8, 3]));
+// 1, 2, 5, 4, 8, 3
+//       4  5
