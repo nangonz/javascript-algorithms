@@ -3825,39 +3825,7 @@ function reverse(head) {
   return temp;
 }
 
-function juntar(arr1, arr2) {
-  let aux = [];
-  let i = 0;
-  let j = 0;
-
-  while (i < arr1.length && j < arr2.length) {
-    if (arr1[i] < arr2[j]) {
-      aux.push(arr1[i]);
-      i++;
-    } else {
-      aux.push(arr2[j]);
-      j++;
-    }
-  }
-  return aux.concat(arr1.slice(i)).concat(arr2.slice(j));
-}
-
-function dividir(arr) {
-  var midIndex = Math.floor(arr.length / 2);
-  let mitad1 = arr.slice(0, midIndex);
-  let mitad2 = arr.slice(midIndex);
-
-  return [mitad1, mitad2];
-}
-
-function mergeSort(array) {
-  if (arr.length === 1) return array;
-  let arrayDividido = dividir(array);
-  let mitad1 = arrayDividido[0];
-  let mitad2 = arrayDividido[1];
-
-  return juntar(mergeSort(mitad1), mergeSort(mitad2));
-}
+// - - - - - - - - -  - -
 
 function bubbleSort(arr) {
   let saveValue = 0;
@@ -3911,4 +3879,55 @@ function selectionSort(arr) {
     }
   }
   return arr;
+}
+
+// Recursive approach
+function quickSort(arr) {
+  if (arr.length <= 1) return arr;
+
+  let pivot = arr.shift();
+  let right = [];
+  let left = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] <= pivot) left.push(arr[i]);
+    if (arr[i] > pivot) right.push(arr[i]);
+  }
+
+  return quickSort(left).concat(pivot).concat(quickSort(right));
+}
+// console.log(quickSort([1, 5, 2, 4, 8, 3, 5, 4]));
+
+function juntar(arr1, arr2) {
+  let aux = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] < arr2[j]) {
+      aux.push(arr1[i]);
+      i++;
+    } else {
+      aux.push(arr2[j]);
+      j++;
+    }
+  }
+  return aux.concat(arr1.slice(i)).concat(arr2.slice(j));
+}
+
+function dividir(arr) {
+  var midIndex = Math.floor(arr.length / 2);
+  let mitad1 = arr.slice(0, midIndex);
+  let mitad2 = arr.slice(midIndex);
+
+  return [mitad1, mitad2];
+}
+
+function mergeSort(array) {
+  if (arr.length === 1) return array;
+  let arrayDividido = dividir(array);
+  let mitad1 = arrayDividido[0];
+  let mitad2 = arrayDividido[1];
+
+  return juntar(mergeSort(mitad1), mergeSort(mitad2));
 }
