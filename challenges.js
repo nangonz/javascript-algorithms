@@ -3912,5 +3912,3 @@ function selectionSort(arr) {
   }
   return arr;
 }
-
-console.log(selectionSort([1, 5, 4, 2, 8, 3]));
