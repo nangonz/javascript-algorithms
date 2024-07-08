@@ -3893,6 +3893,24 @@ function insertionSort(arr) {
   return arr;
 }
 
-console.log(insertionSort([1, 5, 2, 4, 8, 3]));
-// 1, 2, 5, 4, 8, 3
-//       4  5
+// console.log(insertionSort([1, 5, 2, 4, 8, 3]));
+
+function selectionSort(arr) {
+  let min;
+  for (let i = 0; i < arr.length - 1; i++) {
+    min = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[min]) {
+        min = j;
+      }
+    }
+    if (min != i) {
+      let saveValue = arr[i];
+      arr[i] = arr[min];
+      arr[min] = saveValue;
+    }
+  }
+  return arr;
+}
+
+console.log(selectionSort([1, 5, 4, 2, 8, 3]));
