@@ -3898,36 +3898,36 @@ function quickSort(arr) {
 }
 // console.log(quickSort([1, 5, 2, 4, 8, 3, 5, 4]));
 
-function juntar(arr1, arr2) {
-  let aux = [];
-  let i = 0;
-  let j = 0;
-
-  while (i < arr1.length && j < arr2.length) {
-    if (arr1[i] < arr2[j]) {
-      aux.push(arr1[i]);
-      i++;
-    } else {
-      aux.push(arr2[j]);
-      j++;
-    }
-  }
-  return aux.concat(arr1.slice(i)).concat(arr2.slice(j));
-}
-
-function dividir(arr) {
-  var midIndex = Math.floor(arr.length / 2);
-  let mitad1 = arr.slice(0, midIndex);
-  let mitad2 = arr.slice(midIndex);
-
-  return [mitad1, mitad2];
-}
-
 function mergeSort(array) {
-  if (arr.length === 1) return array;
-  let arrayDividido = dividir(array);
+  if (array.length === 1) return array;
+
+  const splitInMiddle = (arr) => {
+    let midIndex = Math.floor(arr.length / 2);
+    return [arr.slice(0, midIndex), arr.slice(midIndex)];
+  };
+
+  const mergeArrays = (arr1, arr2) => {
+    let aux = [];
+    let i = 0;
+    let j = 0;
+
+    while (i < arr1.length && j < arr2.length) {
+      if (arr1[i] < arr2[j]) {
+        aux.push(arr1[i]);
+        i++;
+      } else {
+        aux.push(arr2[j]);
+        j++;
+      }
+    }
+    return aux.concat(arr1.slice(i)).concat(arr2.slice(j));
+  };
+
+  let arrayDividido = splitInMiddle(array);
   let mitad1 = arrayDividido[0];
   let mitad2 = arrayDividido[1];
 
-  return juntar(mergeSort(mitad1), mergeSort(mitad2));
+  return mergeArrays(mergeSort(mitad1), mergeSort(mitad2));
 }
+
+console.log(mergeSort([1, 5, 2, 4, 8, 3]));
