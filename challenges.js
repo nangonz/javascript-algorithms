@@ -3825,7 +3825,7 @@ function reverse(head) {
   return temp;
 }
 
-// - - - - - - - - -  - -
+// Sorting Algorithms: bubbleSort, insertionSort, selectionSort, quickSort, mergeSort
 
 function bubbleSort(arr) {
   let saveValue = 0;
@@ -3881,6 +3881,8 @@ function selectionSort(arr) {
   return arr;
 }
 
+// console.log(selectionSort([1, 5, 2, 4, 8, 3]));
+
 // Recursive approach
 function quickSort(arr) {
   if (arr.length <= 1) return arr;
@@ -3924,10 +3926,12 @@ function dividir(arr) {
 }
 
 function mergeSort(array) {
-  if (arr.length === 1) return array;
+  if (array.length === 1) return array;
   let arrayDividido = dividir(array);
   let mitad1 = arrayDividido[0];
   let mitad2 = arrayDividido[1];
 
   return juntar(mergeSort(mitad1), mergeSort(mitad2));
 }
+
+// console.log(mergeSort([1, 5, 2, 4, 8, 3, 5, 4]));
